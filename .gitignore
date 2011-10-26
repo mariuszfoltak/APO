@@ -1,0 +1,16 @@
+[Bb]uild/ 
+[Dd]ebug*/ 
+[Rr]elease*/ 
+[Bb]in/ 
+[Oo]bj/ 
+cfg/ 
+*.user 
+*.suo 
+*.o 
+*.ncb 
+*.aps 
+*.old 
+*.obj 
+*~ 
+*.a 
+*.so 
