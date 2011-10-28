@@ -413,7 +413,7 @@ namespace APO
             drawHistogram();
         }
 
-        public void progowanie()
+        public void progowanie(int prog)
         {
             for (int i = 0; i < bitmap.Height; i++)
             {
@@ -421,8 +421,56 @@ namespace APO
                 {
                     Color c = bitmap.GetPixel(j, i);
 
-                    int color = (c.R < 128 ? 0 : 255);
+                    int color = (c.R < prog ? 0 : 255);
 
+                    bitmap.SetPixel(j, i, Color.FromArgb(color, color, color));
+                }
+            }
+            pictureBox1.Refresh();
+            drawHistogram();
+        }
+
+        public void redukcjaPoziomowSzarosci(int poziomy)
+        {
+            double prog = 256 / (poziomy-1);
+
+            for (int i = 0; i < bitmap.Height; i++)
+            {
+                for (int j = 0; j < bitmap.Width; j++)
+                {
+                    Color c = bitmap.GetPixel(j, i);
+
+                    int color = 255;
+
+                    for (int k = 0; k < poziomy-1; k++)
+                    {
+                        if (c.R < prog * (k + 0.5))
+                        {
+                            color = (int)prog * k;
+                            break;
+                        }
+                    }
+
+                    bitmap.SetPixel(j, i, Color.FromArgb(color, color, color));
+                }
+            }
+            pictureBox1.Refresh();
+            drawHistogram();
+        }
+
+        public void rozciaganie(int start, int koniec)
+        {
+            for (int i = 0; i < bitmap.Height; i++)
+            {
+                for (int j = 0; j < bitmap.Width; j++)
+                {
+                    Color c = bitmap.GetPixel(j, i);
+                    int color = 0;
+
+                    if (c.R >= start && c.R <= koniec)
+                    {
+                        color = 255 - (255 * (koniec - c.R) / (koniec - start));                        
+                    }
                     bitmap.SetPixel(j, i, Color.FromArgb(color, color, color));
                 }
             }

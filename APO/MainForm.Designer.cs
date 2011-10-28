@@ -44,10 +44,12 @@
             this.metodaPierwszaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.metodaDrugaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.metodaTrzeciaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.operacjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.negacjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.progowanieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.redukcjaPoziomówSzarościToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rozciaganieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -177,15 +179,13 @@
             this.metodaTrzeciaToolStripMenuItem.Text = "Metoda trzecia";
             this.metodaTrzeciaToolStripMenuItem.Click += new System.EventHandler(this.metodaTrzeciaToolStripMenuItem_Click);
             // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
             // operacjaToolStripMenuItem
             // 
             this.operacjaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.negacjaToolStripMenuItem,
-            this.progowanieToolStripMenuItem});
+            this.progowanieToolStripMenuItem,
+            this.redukcjaPoziomówSzarościToolStripMenuItem,
+            this.rozciaganieToolStripMenuItem});
             this.operacjaToolStripMenuItem.Name = "operacjaToolStripMenuItem";
             this.operacjaToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.operacjaToolStripMenuItem.Text = "Operacja";
@@ -193,16 +193,34 @@
             // negacjaToolStripMenuItem
             // 
             this.negacjaToolStripMenuItem.Name = "negacjaToolStripMenuItem";
-            this.negacjaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.negacjaToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.negacjaToolStripMenuItem.Text = "Negacja";
             this.negacjaToolStripMenuItem.Click += new System.EventHandler(this.negacjaToolStripMenuItem_Click);
             // 
             // progowanieToolStripMenuItem
             // 
             this.progowanieToolStripMenuItem.Name = "progowanieToolStripMenuItem";
-            this.progowanieToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.progowanieToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.progowanieToolStripMenuItem.Text = "Progowanie";
             this.progowanieToolStripMenuItem.Click += new System.EventHandler(this.progowanieToolStripMenuItem_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // redukcjaPoziomówSzarościToolStripMenuItem
+            // 
+            this.redukcjaPoziomówSzarościToolStripMenuItem.Name = "redukcjaPoziomówSzarościToolStripMenuItem";
+            this.redukcjaPoziomówSzarościToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.redukcjaPoziomówSzarościToolStripMenuItem.Text = "Redukcja poziomów szarości";
+            this.redukcjaPoziomówSzarościToolStripMenuItem.Click += new System.EventHandler(this.redukcjaPoziomówSzarościToolStripMenuItem_Click);
+            // 
+            // rozciaganieToolStripMenuItem
+            // 
+            this.rozciaganieToolStripMenuItem.Name = "rozciaganieToolStripMenuItem";
+            this.rozciaganieToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.rozciaganieToolStripMenuItem.Text = "Rozciaganie";
+            this.rozciaganieToolStripMenuItem.Click += new System.EventHandler(this.rozciaganieToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -215,6 +233,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "Algorytmy przetwarzania obrazów";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -246,6 +265,8 @@
         private System.Windows.Forms.ToolStripMenuItem operacjaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem negacjaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem progowanieToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem redukcjaPoziomówSzarościToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rozciaganieToolStripMenuItem;
     }
 }
 

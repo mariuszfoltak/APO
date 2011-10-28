@@ -95,10 +95,46 @@ namespace APO
         {
             Picture activeChild = (Picture)this.ActiveMdiChild;
 
-            if (activeChild != null)
-            {
-                activeChild.progowanie();
-            }
+            if (activeChild == null)
+                return;
+
+            myCustomDialog dialog = new myCustomDialog("Progowanie", "Podaj wartość do progowania");
+
+            if (dialog.ShowDialog() == DialogResult.Cancel)
+                return;
+
+            activeChild.progowanie(Convert.ToInt32(dialog.value));
+        }
+
+        private void redukcjaPoziomówSzarościToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Picture activeChild = (Picture)this.ActiveMdiChild;
+
+            if (activeChild == null)
+                return;
+
+            myCustomDialog dialog = new myCustomDialog("Redukcja poziomów szarości", "Podaj ilość poziomów");
+
+            if (dialog.ShowDialog() == DialogResult.Cancel)
+                return;
+
+            activeChild.redukcjaPoziomowSzarosci(Convert.ToInt32(dialog.value));
+        }
+
+        private void rozciaganieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Picture activeChild = (Picture)this.ActiveMdiChild;
+
+            if (activeChild == null)
+                return;
+
+            myCustomDialog dialog = new myCustomDialog("Rozciąganie", 
+                "Podaj początkowy poziom", "Podaj końcowy poziom");
+
+            if (dialog.ShowDialog() == DialogResult.Cancel)
+                return;
+
+            activeChild.rozciaganie(Convert.ToInt32(dialog.value), Convert.ToInt32(dialog.value2));
         }
     }
 }
