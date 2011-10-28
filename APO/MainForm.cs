@@ -217,5 +217,53 @@ namespace APO
 
             activeChild.sub(((Picture)this.MdiChildren[dialog.combovalue]).bitmap);
         }
+
+        private void aNDToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Picture activeChild = (Picture)this.ActiveMdiChild;
+
+            if (activeChild == null)
+                return;
+
+            myCustomDialog dialog = new myCustomDialog("Operacja logiczna AND",
+                "Wybierz obraz", this.MdiChildren);
+
+            if (dialog.ShowDialog() == DialogResult.Cancel)
+                return;
+
+            activeChild.and(((Picture)this.MdiChildren[dialog.combovalue]).bitmap);
+        }
+
+        private void oRToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Picture activeChild = (Picture)this.ActiveMdiChild;
+
+            if (activeChild == null)
+                return;
+
+            myCustomDialog dialog = new myCustomDialog("Operacja logiczna OR",
+                "Wybierz obraz", this.MdiChildren);
+
+            if (dialog.ShowDialog() == DialogResult.Cancel)
+                return;
+
+            activeChild.or(((Picture)this.MdiChildren[dialog.combovalue]).bitmap);
+        }
+
+        private void xORToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Picture activeChild = (Picture)this.ActiveMdiChild;
+
+            if (activeChild == null)
+                return;
+
+            myCustomDialog dialog = new myCustomDialog("Operacja logiczna XOR",
+                "Wybierz obraz", this.MdiChildren);
+
+            if (dialog.ShowDialog() == DialogResult.Cancel)
+                return;
+
+            activeChild.xor(((Picture)this.MdiChildren[dialog.combovalue]).bitmap);
+        }
     }
 }

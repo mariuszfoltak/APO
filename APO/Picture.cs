@@ -577,5 +577,59 @@ namespace APO
             pictureBox1.Refresh();
             drawHistogram();
         }
+
+        public void and(Bitmap bitmap2)
+        {
+            for (int i = 0; i < bitmap.Height; i++)
+            {
+                for (int j = 0; j < bitmap.Width; j++)
+                {
+                    Color c = bitmap.GetPixel(j, i);
+                    Color d = bitmap2.GetPixel(j, i);
+
+                    int color = c.R & d.R;
+
+                    bitmap.SetPixel(j, i, Color.FromArgb(color, color, color));
+                }
+            }
+            pictureBox1.Refresh();
+            drawHistogram();
+        }
+
+        public void or(Bitmap bitmap2)
+        {
+            for (int i = 0; i < bitmap.Height; i++)
+            {
+                for (int j = 0; j < bitmap.Width; j++)
+                {
+                    Color c = bitmap.GetPixel(j, i);
+                    Color d = bitmap2.GetPixel(j, i);
+
+                    int color = c.R | d.R;
+
+                    bitmap.SetPixel(j, i, Color.FromArgb(color, color, color));
+                }
+            }
+            pictureBox1.Refresh();
+            drawHistogram();
+        }
+
+        public void xor(Bitmap bitmap2)
+        {
+            for (int i = 0; i < bitmap.Height; i++)
+            {
+                for (int j = 0; j < bitmap.Width; j++)
+                {
+                    Color c = bitmap.GetPixel(j, i);
+                    Color d = bitmap2.GetPixel(j, i);
+
+                    int color = c.R ^ d.R;
+
+                    bitmap.SetPixel(j, i, Color.FromArgb(color, color, color));
+                }
+            }
+            pictureBox1.Refresh();
+            drawHistogram();
+        }
     }
 }

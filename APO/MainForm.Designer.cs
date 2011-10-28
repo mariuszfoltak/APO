@@ -55,6 +55,10 @@
             this.gammaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodawanieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.odejmowanieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logiczneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aNDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.oRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.xORToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -195,7 +199,8 @@
             this.kontrastToolStripMenuItem,
             this.gammaToolStripMenuItem,
             this.dodawanieToolStripMenuItem,
-            this.odejmowanieToolStripMenuItem});
+            this.odejmowanieToolStripMenuItem,
+            this.logiczneToolStripMenuItem});
             this.operacjaToolStripMenuItem.Name = "operacjaToolStripMenuItem";
             this.operacjaToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.operacjaToolStripMenuItem.Text = "Operacja";
@@ -267,6 +272,37 @@
             this.odejmowanieToolStripMenuItem.Text = "Odejmowanie";
             this.odejmowanieToolStripMenuItem.Click += new System.EventHandler(this.odejmowanieToolStripMenuItem_Click);
             // 
+            // logiczneToolStripMenuItem
+            // 
+            this.logiczneToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aNDToolStripMenuItem,
+            this.oRToolStripMenuItem,
+            this.xORToolStripMenuItem});
+            this.logiczneToolStripMenuItem.Name = "logiczneToolStripMenuItem";
+            this.logiczneToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.logiczneToolStripMenuItem.Text = "Logiczne";
+            // 
+            // aNDToolStripMenuItem
+            // 
+            this.aNDToolStripMenuItem.Name = "aNDToolStripMenuItem";
+            this.aNDToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aNDToolStripMenuItem.Text = "AND";
+            this.aNDToolStripMenuItem.Click += new System.EventHandler(this.aNDToolStripMenuItem_Click);
+            // 
+            // oRToolStripMenuItem
+            // 
+            this.oRToolStripMenuItem.Name = "oRToolStripMenuItem";
+            this.oRToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.oRToolStripMenuItem.Text = "OR";
+            this.oRToolStripMenuItem.Click += new System.EventHandler(this.oRToolStripMenuItem_Click);
+            // 
+            // xORToolStripMenuItem
+            // 
+            this.xORToolStripMenuItem.Name = "xORToolStripMenuItem";
+            this.xORToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.xORToolStripMenuItem.Text = "XOR";
+            this.xORToolStripMenuItem.Click += new System.EventHandler(this.xORToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -317,6 +353,10 @@
         private System.Windows.Forms.ToolStripMenuItem gammaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dodawanieToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem odejmowanieToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem logiczneToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aNDToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem oRToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem xORToolStripMenuItem;
     }
 }
 
