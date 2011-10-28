@@ -477,5 +477,23 @@ namespace APO
             pictureBox1.Refresh();
             drawHistogram();
         }
+
+        public void kontrast(int procent)
+        {
+            for (int i = 0; i < bitmap.Height; i++)
+            {
+                for (int j = 0; j < bitmap.Width; j++)
+                {
+                    Color c = bitmap.GetPixel(j, i);
+
+                    int color = c.R + (255 * procent / 100);
+                    if (color > 255) color = 255;
+
+                    bitmap.SetPixel(j, i, Color.FromArgb(color, color, color));
+                }
+            }
+            pictureBox1.Refresh();
+            drawHistogram();
+        }
     }
 }

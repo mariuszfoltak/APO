@@ -136,5 +136,35 @@ namespace APO
 
             activeChild.rozciaganie(Convert.ToInt32(dialog.value), Convert.ToInt32(dialog.value2));
         }
+
+        private void kontrastToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Picture activeChild = (Picture)this.ActiveMdiChild;
+
+            if (activeChild == null)
+                return;
+
+            myCustomDialog dialog = new myCustomDialog("Jasność", "Podaj o ile procent zwiększyć jasność");
+
+            if (dialog.ShowDialog() == DialogResult.Cancel)
+                return;
+
+            activeChild.kontrast(Convert.ToInt32(dialog.value));
+        }
+
+        private void kontrastToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            Picture activeChild = (Picture)this.ActiveMdiChild;
+
+            if (activeChild == null)
+                return;
+
+            myCustomDialog dialog = new myCustomDialog("Jasność", "Podaj o ile procent zwiększyć jasność");
+
+            if (dialog.ShowDialog() == DialogResult.Cancel)
+                return;
+
+            activeChild.kontrast(Convert.ToInt32(dialog.value));
+        }
     }
 }

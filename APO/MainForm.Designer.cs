@@ -47,9 +47,11 @@
             this.operacjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.negacjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.progowanieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.redukcjaPoziomówSzarościToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rozciaganieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.jasnoscToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kontrastToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -185,7 +187,9 @@
             this.negacjaToolStripMenuItem,
             this.progowanieToolStripMenuItem,
             this.redukcjaPoziomówSzarościToolStripMenuItem,
-            this.rozciaganieToolStripMenuItem});
+            this.rozciaganieToolStripMenuItem,
+            this.jasnoscToolStripMenuItem,
+            this.kontrastToolStripMenuItem});
             this.operacjaToolStripMenuItem.Name = "operacjaToolStripMenuItem";
             this.operacjaToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.operacjaToolStripMenuItem.Text = "Operacja";
@@ -193,20 +197,16 @@
             // negacjaToolStripMenuItem
             // 
             this.negacjaToolStripMenuItem.Name = "negacjaToolStripMenuItem";
-            this.negacjaToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.negacjaToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
             this.negacjaToolStripMenuItem.Text = "Negacja";
             this.negacjaToolStripMenuItem.Click += new System.EventHandler(this.negacjaToolStripMenuItem_Click);
             // 
             // progowanieToolStripMenuItem
             // 
             this.progowanieToolStripMenuItem.Name = "progowanieToolStripMenuItem";
-            this.progowanieToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.progowanieToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
             this.progowanieToolStripMenuItem.Text = "Progowanie";
             this.progowanieToolStripMenuItem.Click += new System.EventHandler(this.progowanieToolStripMenuItem_Click);
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // redukcjaPoziomówSzarościToolStripMenuItem
             // 
@@ -221,6 +221,24 @@
             this.rozciaganieToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
             this.rozciaganieToolStripMenuItem.Text = "Rozciaganie";
             this.rozciaganieToolStripMenuItem.Click += new System.EventHandler(this.rozciaganieToolStripMenuItem_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // jasnoscToolStripMenuItem
+            // 
+            this.jasnoscToolStripMenuItem.Name = "jasnoscToolStripMenuItem";
+            this.jasnoscToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.jasnoscToolStripMenuItem.Text = "Jasność";
+            this.jasnoscToolStripMenuItem.Click += new System.EventHandler(this.kontrastToolStripMenuItem_Click);
+            // 
+            // kontrastToolStripMenuItem
+            // 
+            this.kontrastToolStripMenuItem.Name = "kontrastToolStripMenuItem";
+            this.kontrastToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.kontrastToolStripMenuItem.Text = "Kontrast";
+            this.kontrastToolStripMenuItem.Click += new System.EventHandler(this.kontrastToolStripMenuItem_Click_1);
             // 
             // MainForm
             // 
@@ -267,6 +285,8 @@
         private System.Windows.Forms.ToolStripMenuItem progowanieToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem redukcjaPoziomówSzarościToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rozciaganieToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem jasnoscToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kontrastToolStripMenuItem;
     }
 }
 
