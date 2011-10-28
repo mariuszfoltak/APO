@@ -52,6 +52,7 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.jasnoscToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kontrastToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gammaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -189,7 +190,8 @@
             this.redukcjaPoziomówSzarościToolStripMenuItem,
             this.rozciaganieToolStripMenuItem,
             this.jasnoscToolStripMenuItem,
-            this.kontrastToolStripMenuItem});
+            this.kontrastToolStripMenuItem,
+            this.gammaToolStripMenuItem});
             this.operacjaToolStripMenuItem.Name = "operacjaToolStripMenuItem";
             this.operacjaToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.operacjaToolStripMenuItem.Text = "Operacja";
@@ -240,6 +242,13 @@
             this.kontrastToolStripMenuItem.Text = "Kontrast";
             this.kontrastToolStripMenuItem.Click += new System.EventHandler(this.kontrastToolStripMenuItem_Click_1);
             // 
+            // gammaToolStripMenuItem
+            // 
+            this.gammaToolStripMenuItem.Name = "gammaToolStripMenuItem";
+            this.gammaToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.gammaToolStripMenuItem.Text = "Gamma";
+            this.gammaToolStripMenuItem.Click += new System.EventHandler(this.gammaToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -287,6 +296,7 @@
         private System.Windows.Forms.ToolStripMenuItem rozciaganieToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem jasnoscToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem kontrastToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gammaToolStripMenuItem;
     }
 }
 

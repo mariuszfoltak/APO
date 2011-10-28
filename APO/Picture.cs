@@ -478,7 +478,7 @@ namespace APO
             drawHistogram();
         }
 
-        public void kontrast(int procent)
+        public void jasnosc(int procent)
         {
             for (int i = 0; i < bitmap.Height; i++)
             {
@@ -488,6 +488,51 @@ namespace APO
 
                     int color = c.R + (255 * procent / 100);
                     if (color > 255) color = 255;
+                    else if (color < 0) color = 0;
+
+                    bitmap.SetPixel(j, i, Color.FromArgb(color, color, color));
+                }
+            }
+            pictureBox1.Refresh();
+            drawHistogram();
+        }
+
+        public void kontrast(int procent)
+        {
+            double kontrast = ((100 - procent) / 100) ^ 2;
+            for (int i = 0; i < bitmap.Height; i++)
+            {
+                for (int j = 0; j < bitmap.Width; j++)
+                {
+                    Color c = bitmap.GetPixel(j, i);
+                    double col = c.R / 255.0;
+                    col -= 0.5;
+                    col *= kontrast;
+                    col += 0.5;
+                    col *= 255.0;
+
+                    if (col > 255) col = 255.0;
+                    else if (col < 0) col = 0.0;
+
+                    int color = (int)col;
+
+                    bitmap.SetPixel(j, i, Color.FromArgb(color, color, color));
+                }
+            }
+            pictureBox1.Refresh();
+            drawHistogram();
+        }
+
+        public void gamma(int procent)
+        {
+            double kontrast = ((100 - procent) / 100) ^ 2;
+            for (int i = 0; i < bitmap.Height; i++)
+            {
+                for (int j = 0; j < bitmap.Width; j++)
+                {
+                    Color c = bitmap.GetPixel(j, i);
+
+                    int color = Math.Min(255, (int)((255.0 * Math.Pow(i / 255.0, 1.0 / c.R)) + 0.5));
 
                     bitmap.SetPixel(j, i, Color.FromArgb(color, color, color));
                 }

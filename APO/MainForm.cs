@@ -149,7 +149,7 @@ namespace APO
             if (dialog.ShowDialog() == DialogResult.Cancel)
                 return;
 
-            activeChild.kontrast(Convert.ToInt32(dialog.value));
+            activeChild.jasnosc(Convert.ToInt32(dialog.value));
         }
 
         private void kontrastToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -159,12 +159,27 @@ namespace APO
             if (activeChild == null)
                 return;
 
-            myCustomDialog dialog = new myCustomDialog("Jasność", "Podaj o ile procent zwiększyć jasność");
+            myCustomDialog dialog = new myCustomDialog("Kontrast", "Podaj o ile procent zwiększyć kontrast");
 
             if (dialog.ShowDialog() == DialogResult.Cancel)
                 return;
 
             activeChild.kontrast(Convert.ToInt32(dialog.value));
+        }
+
+        private void gammaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Picture activeChild = (Picture)this.ActiveMdiChild;
+
+            if (activeChild == null)
+                return;
+
+            myCustomDialog dialog = new myCustomDialog("Gamma", "Podaj o ile procent zwiększyć gamme");
+
+            if (dialog.ShowDialog() == DialogResult.Cancel)
+                return;
+
+            activeChild.gamma(Convert.ToInt32(dialog.value));
         }
     }
 }
