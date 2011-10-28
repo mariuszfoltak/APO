@@ -499,7 +499,8 @@ namespace APO
 
         public void kontrast(int procent)
         {
-            double kontrast = ((100 - procent) / 100) ^ 2;
+            if (procent == 0) return;
+            double kontrast = Math.Pow(((100.0 + (double)procent) / 100.0), 2.0);
             for (int i = 0; i < bitmap.Height; i++)
             {
                 for (int j = 0; j < bitmap.Width; j++)
@@ -523,16 +524,16 @@ namespace APO
             drawHistogram();
         }
 
-        public void gamma(int procent)
+        public void gamma(double gamma)
         {
-            double kontrast = ((100 - procent) / 100) ^ 2;
             for (int i = 0; i < bitmap.Height; i++)
             {
                 for (int j = 0; j < bitmap.Width; j++)
                 {
                     Color c = bitmap.GetPixel(j, i);
 
-                    int color = Math.Min(255, (int)((255.0 * Math.Pow(i / 255.0, 1.0 / c.R)) + 0.5));
+                    double col = 255.0 * Math.Pow((c.R / 255.0), (1.0 / gamma));
+                    int color = (int)col;
 
                     bitmap.SetPixel(j, i, Color.FromArgb(color, color, color));
                 }

@@ -179,7 +179,7 @@ namespace APO
             if (dialog.ShowDialog() == DialogResult.Cancel)
                 return;
 
-            activeChild.gamma(Convert.ToInt32(dialog.value));
+            activeChild.gamma(Convert.ToDouble(dialog.value));
         }
     }
 }
