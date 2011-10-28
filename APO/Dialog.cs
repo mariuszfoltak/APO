@@ -13,12 +13,42 @@ namespace APO
     {
         public String value;
         public String value2;
+        public int combovalue;
+
+        private class Item
+        {
+            public string Name;
+            public int Value;
+            public Item(string name, int value)
+            {
+                Name = name; Value = value;
+            }
+            public override string ToString()
+            {
+                // Generates the text shown in the combo box
+                return Name;
+            }
+        };
 
         public myCustomDialog(String title, String label)
         {
             InitializeComponent();
             Text = title;
             labelDesc.Text = label;
+        }
+
+        public myCustomDialog(String title, String label, Form[] forms)
+        {
+            InitializeComponent();
+            Text = title;
+            labelDesc.Text = label;
+            textBox.Visible = false;
+            comboBox1.Visible = true;
+            int i = 0;
+            foreach(Form form in forms)
+            {
+                comboBox1.Items.Add(new Item(form.Text, i++));
+            }
         }
 
         public myCustomDialog(String title, String label, String label2)
@@ -35,6 +65,10 @@ namespace APO
         {
             value = textBox.Text;
             value2 = textBox2.Text;
+            try
+            {
+                combovalue = ((Item)comboBox1.SelectedItem).Value;
+            }catch(Exception errorek){}
 
             myAcceptButton.DialogResult = DialogResult.OK;
         }

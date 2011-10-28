@@ -53,6 +53,8 @@
             this.jasnoscToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kontrastToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gammaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dodawanieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.odejmowanieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -191,7 +193,9 @@
             this.rozciaganieToolStripMenuItem,
             this.jasnoscToolStripMenuItem,
             this.kontrastToolStripMenuItem,
-            this.gammaToolStripMenuItem});
+            this.gammaToolStripMenuItem,
+            this.dodawanieToolStripMenuItem,
+            this.odejmowanieToolStripMenuItem});
             this.operacjaToolStripMenuItem.Name = "operacjaToolStripMenuItem";
             this.operacjaToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.operacjaToolStripMenuItem.Text = "Operacja";
@@ -249,6 +253,20 @@
             this.gammaToolStripMenuItem.Text = "Gamma";
             this.gammaToolStripMenuItem.Click += new System.EventHandler(this.gammaToolStripMenuItem_Click);
             // 
+            // dodawanieToolStripMenuItem
+            // 
+            this.dodawanieToolStripMenuItem.Name = "dodawanieToolStripMenuItem";
+            this.dodawanieToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.dodawanieToolStripMenuItem.Text = "Dodawanie";
+            this.dodawanieToolStripMenuItem.Click += new System.EventHandler(this.dodawanieToolStripMenuItem_Click);
+            // 
+            // odejmowanieToolStripMenuItem
+            // 
+            this.odejmowanieToolStripMenuItem.Name = "odejmowanieToolStripMenuItem";
+            this.odejmowanieToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.odejmowanieToolStripMenuItem.Text = "Odejmowanie";
+            this.odejmowanieToolStripMenuItem.Click += new System.EventHandler(this.odejmowanieToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -297,6 +315,8 @@
         private System.Windows.Forms.ToolStripMenuItem jasnoscToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem kontrastToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gammaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dodawanieToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem odejmowanieToolStripMenuItem;
     }
 }
 

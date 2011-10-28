@@ -13,7 +13,7 @@ namespace APO
     public partial class Picture : Form
     {
         private int[] histogram;
-        Bitmap bitmap;
+        public Bitmap bitmap;
 
         public Picture()
         {
@@ -534,6 +534,42 @@ namespace APO
 
                     double col = 255.0 * Math.Pow((c.R / 255.0), (1.0 / gamma));
                     int color = (int)col;
+
+                    bitmap.SetPixel(j, i, Color.FromArgb(color, color, color));
+                }
+            }
+            pictureBox1.Refresh();
+            drawHistogram();
+        }
+
+        public void add(Bitmap bitmap2)
+        {
+            for (int i = 0; i < bitmap.Height; i++)
+            {
+                for (int j = 0; j < bitmap.Width; j++)
+                {
+                    Color c = bitmap.GetPixel(j, i);
+                    Color d = bitmap2.GetPixel(j, i);
+
+                    int color = (c.R + d.R) / 2;
+
+                    bitmap.SetPixel(j, i, Color.FromArgb(color, color, color));
+                }
+            }
+            pictureBox1.Refresh();
+            drawHistogram();
+        }
+
+        public void sub(Bitmap bitmap2)
+        {
+            for (int i = 0; i < bitmap.Height; i++)
+            {
+                for (int j = 0; j < bitmap.Width; j++)
+                {
+                    Color c = bitmap.GetPixel(j, i);
+                    Color d = bitmap2.GetPixel(j, i);
+
+                    int color = Math.Abs(c.R - d.R);
 
                     bitmap.SetPixel(j, i, Color.FromArgb(color, color, color));
                 }

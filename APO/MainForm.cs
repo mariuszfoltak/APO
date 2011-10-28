@@ -11,6 +11,8 @@ namespace APO
 {
     public partial class MainForm : Form
     {
+        private Int32 formCounter = 0;
+
         public MainForm()
         {
             InitializeComponent();
@@ -23,6 +25,7 @@ namespace APO
 
             Picture picture = new Picture();
             picture.MdiParent = this;
+            picture.Text = new StringBuilder("Obraz ").Append(++formCounter).ToString();
             picture.loadImage(openFileDialog1.FileName);
             picture.Show();
         }
@@ -46,6 +49,7 @@ namespace APO
             if (activeChild != null)
             {
                 Picture newChild = new Picture(activeChild);
+                newChild.Text = new StringBuilder("Obraz ").Append(++formCounter).ToString();
                 newChild.MdiParent = this;
                 newChild.Show();
             }
@@ -180,6 +184,38 @@ namespace APO
                 return;
 
             activeChild.gamma(Convert.ToDouble(dialog.value));
+        }
+
+        private void dodawanieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Picture activeChild = (Picture)this.ActiveMdiChild;
+
+            if (activeChild == null)
+                return;
+
+            myCustomDialog dialog = new myCustomDialog("Dodawanie", 
+                "Wybierz obraz który chcesz dodać", this.MdiChildren);
+
+            if (dialog.ShowDialog() == DialogResult.Cancel)
+                return;
+
+            activeChild.add(((Picture)this.MdiChildren[dialog.combovalue]).bitmap);
+        }
+
+        private void odejmowanieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Picture activeChild = (Picture)this.ActiveMdiChild;
+
+            if (activeChild == null)
+                return;
+
+            myCustomDialog dialog = new myCustomDialog("Odejmowanie",
+                "Wybierz obraz który chcesz odjąć", this.MdiChildren);
+
+            if (dialog.ShowDialog() == DialogResult.Cancel)
+                return;
+
+            activeChild.sub(((Picture)this.MdiChildren[dialog.combovalue]).bitmap);
         }
     }
 }

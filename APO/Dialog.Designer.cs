@@ -34,6 +34,7 @@
             this.textBox = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.labelDesc2 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // labelDesc
@@ -91,6 +92,15 @@
             this.labelDesc2.Text = "description";
             this.labelDesc2.Visible = false;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(12, 30);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(198, 21);
+            this.comboBox1.TabIndex = 6;
+            this.comboBox1.Visible = false;
+            // 
             // myCustomDialog
             // 
             this.AcceptButton = this.myAcceptButton;
@@ -98,6 +108,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.myCancelButton;
             this.ClientSize = new System.Drawing.Size(222, 138);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.labelDesc2);
             this.Controls.Add(this.textBox);
@@ -122,5 +133,6 @@
         private System.Windows.Forms.TextBox textBox;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label labelDesc2;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
