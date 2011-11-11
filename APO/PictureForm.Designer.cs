@@ -1,6 +1,6 @@
 ﻿namespace APO
 {
-    partial class Picture
+    partial class PictureForm
     {
         /// <summary>
         /// Required designer variable.

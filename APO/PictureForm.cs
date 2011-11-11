@@ -10,17 +10,17 @@ using System.Drawing.Imaging;
 
 namespace APO
 {
-    public partial class Picture : Form
+    public partial class PictureForm : Form
     {
         private int[] histogram;
         public Bitmap bitmap;
 
-        public Picture()
+        public PictureForm()
         {
             InitializeComponent();
         }
 
-        public Picture(Picture picture)
+        public PictureForm(PictureForm picture)
         {
             InitializeComponent();
 
