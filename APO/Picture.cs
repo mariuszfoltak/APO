@@ -710,6 +710,81 @@ namespace APO
             drawHistogram();
 
         }
+        public void Szkieletyzacja()
+        {
+            FastBitmap bmp = new FastBitmap(bitmap);
 
+            int[] dx = { 0, 1, 1, 1, 0, -1, -1, -1 };
+            int[] dy = { 1, 1, 0, -1, -1, -1, 0, 1 };
+
+            bool[,] img = new bool[bmp.Width, bmp.Height];
+            int W = bmp.Width;
+            int H = bmp.Height;
+            for (int i = 0; i < bmp.Width; ++i)
+            {
+                for (int j = 0; j < bmp.Height; ++j)
+                {
+                    img[i, j] = bmp[i, j].B < 128;
+                }
+            }
+
+
+            bool pass = false;
+            LinkedList<Point> list;
+            do
+            {
+                pass = !pass;
+                list = new LinkedList<Point>();
+
+                for (int x = 1; x < W - 1; ++x)
+                {
+                    for (int y = 1; y < H - 1; ++y)
+                    {
+                        if (img[x, y])
+                        {
+                            int cnt = 0;
+                            int hm = 0;
+                            bool prev = img[x - 1, y + 1];
+                            for (int i = 0; i < 8; ++i)
+                            {
+                                bool cur = img[x + dx[i], y + dy[i]];
+                                hm += cur ? 1 : 0;
+                                if (prev && !cur) ++cnt;
+                                prev = cur;
+                            }
+                            if (hm > 1 && hm < 7 && cnt == 1)
+                            {
+                                if (pass && (!img[x + 1, y] || !img[x, y + 1] || !img[x, y - 1] && !img[x - 1, y]))
+                                {
+                                    list.AddLast(new Point(x, y));
+                                }
+                                if (!pass && (!img[x - 1, y] || !img[x, y - 1] || !img[x, y + 1] && !img[x + 1, y]))
+                                {
+                                    list.AddLast(new Point(x, y));
+                                }
+                            }
+                        }
+
+                    }
+                }
+                foreach (Point p in list)
+                {
+                    img[p.X, p.Y] = false;
+                }
+            } while (list.Count != 0);
+
+            for (int x = 0; x < W; ++x)
+            {
+                for (int y = 0; y < H; ++y)
+                {
+                    bmp[x, y] = img[x, y] ? Color.Black : Color.White;
+                }
+            }
+            bmp.Unlock();
+            bitmap = bmp.Bitmap;
+            pictureBox1.Image = bitmap;
+            pictureBox1.Refresh();
+            drawHistogram();
+        }
     }
 }

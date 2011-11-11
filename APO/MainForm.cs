@@ -293,5 +293,15 @@ namespace APO
                 return;
             activeChild.FiltracjaMedianowa(Convert.ToInt32(dialog.value));
         }
+
+        private void szkiletyzacjaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Picture activeChild = (Picture)this.ActiveMdiChild;
+
+            if (activeChild == null)
+                return;
+
+            activeChild.Szkieletyzacja();
+        }
     }
 }

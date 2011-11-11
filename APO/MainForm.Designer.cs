@@ -62,6 +62,7 @@
             this.wyosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.filtracjaMedianowaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.szkiletyzacjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -307,7 +308,8 @@
             // 
             this.lab3ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.wyosToolStripMenuItem,
-            this.filtracjaMedianowaToolStripMenuItem});
+            this.filtracjaMedianowaToolStripMenuItem,
+            this.szkiletyzacjaToolStripMenuItem});
             this.lab3ToolStripMenuItem.Name = "lab3ToolStripMenuItem";
             this.lab3ToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.lab3ToolStripMenuItem.Text = "Lab 3";
@@ -329,6 +331,13 @@
             this.filtracjaMedianowaToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.filtracjaMedianowaToolStripMenuItem.Text = "Filtracja medianowa";
             this.filtracjaMedianowaToolStripMenuItem.Click += new System.EventHandler(this.filtracjaMedianowaToolStripMenuItem_Click);
+            // 
+            // szkiletyzacjaToolStripMenuItem
+            // 
+            this.szkiletyzacjaToolStripMenuItem.Name = "szkiletyzacjaToolStripMenuItem";
+            this.szkiletyzacjaToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.szkiletyzacjaToolStripMenuItem.Text = "Szkieletyzacja";
+            this.szkiletyzacjaToolStripMenuItem.Click += new System.EventHandler(this.szkiletyzacjaToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -387,6 +396,7 @@
         private System.Windows.Forms.ToolStripMenuItem lab3ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem wyosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem filtracjaMedianowaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem szkiletyzacjaToolStripMenuItem;
     }
 }
 
