@@ -70,7 +70,6 @@ namespace APO
                             System.Drawing.Imaging.ImageLockMode.ReadOnly,
                             picture.PixelFormat);
 
-
             int PixelSize = 0;
             switch (picture.PixelFormat)
             {
@@ -90,7 +89,8 @@ namespace APO
 
                     for (int x = 0; x < bmd.Width; x++)
                     {
-                        myHistogram[row[x * PixelSize]]++;
+                        byte color = (byte)((row[x * PixelSize] + row[x * PixelSize + 1] + row[x * PixelSize + 2]) / 3);
+                        myHistogram[color]++;
                     }
                 }
             }
