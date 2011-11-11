@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using APO.Operacje;
 
 namespace APO
 {
@@ -16,6 +17,17 @@ namespace APO
         public MainForm()
         {
             InitializeComponent();
+        }
+
+        private void useFilter(IFilter filter)
+        {
+            Picture activeChild = (Picture)this.ActiveMdiChild;
+
+            filter.setImage(activeChild.bitmap);
+
+            filter.Convert();
+
+            activeChild.refresh();
         }
 
         private void otwórzToolStripMenuItem_Click(object sender, EventArgs e)
@@ -32,14 +44,7 @@ namespace APO
 
         private void konwertujDoSzarości8BitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (Picture)this.ActiveMdiChild;
-
-            // If there is an active child form, find the active control, which
-            // in this example should be a RichTextBox.
-            if (activeChild != null)
-            {
-                activeChild.MakeGrayscale3();
-            }
+            useFilter(new GrayScale());
         }
 
         private void duplikujToolStripMenuItem_Click(object sender, EventArgs e)

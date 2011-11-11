@@ -51,6 +51,12 @@ namespace APO
             return newBMP;
         }
 
+        public void refresh()
+        {
+            pictureBox1.Refresh();
+            drawHistogram();
+        }
+
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
@@ -60,19 +66,36 @@ namespace APO
         {
             int[] myHistogram = new int[256];
 
-            for (int i = 0; i < picture.Size.Width; i++)
-                for (int j = 0; j < picture.Size.Height; j++)
+            BitmapData bmd = picture.LockBits(new Rectangle(0, 0, picture.Size.Width, picture.Size.Height),
+                            System.Drawing.Imaging.ImageLockMode.ReadOnly,
+                            picture.PixelFormat);
+
+
+            int PixelSize = 0;
+            switch (picture.PixelFormat)
+            {
+                case PixelFormat.Format32bppArgb:
+                    PixelSize = 4;
+                    break;
+                case PixelFormat.Format24bppRgb:
+                    PixelSize = 3;
+                    break;
+            }
+
+            unsafe
+            {
+                for (int y = 0; y < bmd.Height; y++)
                 {
-                    System.Drawing.Color c = picture.GetPixel(i, j);
+                    byte* row = (byte*)bmd.Scan0 + (y * bmd.Stride);
 
-                    int Temp = 0;
-                    Temp += c.R;
-                    Temp += c.G;
-                    Temp += c.B;
-
-                    Temp = (int)Temp / 3;
-                    myHistogram[Temp]++;
+                    for (int x = 0; x < bmd.Width; x++)
+                    {
+                        myHistogram[row[x * PixelSize]]++;
+                    }
                 }
+            }
+
+            picture.UnlockBits(bmd);
 
             return myHistogram;
         }
@@ -104,35 +127,7 @@ namespace APO
 
         public void MakeGrayscale3()
         {
-            //get a graphics object from the new image
-            Graphics g = Graphics.FromImage(bitmap);
-
-            //create the grayscale ColorMatrix
-            ColorMatrix colorMatrix = new ColorMatrix(
-               new float[][]
-                  {
-                     new float[] {.3f, .3f, .3f, 0, 0},
-                     new float[] {.59f, .59f, .59f, 0, 0},
-                     new float[] {.11f, .11f, .11f, 0, 0},
-                     new float[] {0, 0, 0, 1, 0},
-                     new float[] {0, 0, 0, 0, 1}
-                  });
-
-            //create some image attributes
-            ImageAttributes attributes = new ImageAttributes();
-
-            //set the color matrix attribute
-            attributes.SetColorMatrix(colorMatrix);
-
-            //draw the original image on the new image
-            //using the grayscale color matrix
-            g.DrawImage(bitmap, new Rectangle(0, 0, bitmap.Width, bitmap.Height),
-               0, 0, bitmap.Width, bitmap.Height, GraphicsUnit.Pixel, attributes);
-
-            //dispose the Graphics object
-            g.Dispose();
-            pictureBox1.Refresh();
-            drawHistogram();
+            
         }
 
         public void Metoda1()
