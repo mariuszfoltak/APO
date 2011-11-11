@@ -279,5 +279,19 @@ namespace APO
                 return;
             activeChild.ApplyMask(mask3x3Form.Mask, mask3x3Form.Divisor);
         }
+
+        private void filtracjaMedianowaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Picture activeChild = (Picture)this.ActiveMdiChild;
+
+            if (activeChild == null)
+                return;
+
+            myCustomDialog dialog = new myCustomDialog("Gamma", "Podaj o ile procent zwiększyć gamme");
+
+            if (dialog.ShowDialog() == DialogResult.Cancel)
+                return;
+            activeChild.FiltracjaMedianowa(Convert.ToInt32(dialog.value));
+        }
     }
 }

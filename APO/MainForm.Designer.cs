@@ -61,6 +61,7 @@
             this.lab3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wyosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.filtracjaMedianowaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -305,7 +306,8 @@
             // lab3ToolStripMenuItem
             // 
             this.lab3ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.wyosToolStripMenuItem});
+            this.wyosToolStripMenuItem,
+            this.filtracjaMedianowaToolStripMenuItem});
             this.lab3ToolStripMenuItem.Name = "lab3ToolStripMenuItem";
             this.lab3ToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.lab3ToolStripMenuItem.Text = "Lab 3";
@@ -320,6 +322,13 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // filtracjaMedianowaToolStripMenuItem
+            // 
+            this.filtracjaMedianowaToolStripMenuItem.Name = "filtracjaMedianowaToolStripMenuItem";
+            this.filtracjaMedianowaToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.filtracjaMedianowaToolStripMenuItem.Text = "Filtracja medianowa";
+            this.filtracjaMedianowaToolStripMenuItem.Click += new System.EventHandler(this.filtracjaMedianowaToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -377,6 +386,7 @@
         private System.Windows.Forms.ToolStripMenuItem xORToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lab3ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem wyosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem filtracjaMedianowaToolStripMenuItem;
     }
 }
 

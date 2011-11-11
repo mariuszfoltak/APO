@@ -673,5 +673,43 @@ namespace APO
             pictureBox1.Refresh();
             drawHistogram();
         }
+
+        public void FiltracjaMedianowa(int value)
+        {
+            FastBitmap bmp = new FastBitmap(bitmap);
+
+            int filterSize = value;
+            for (int i = 0; i < bmp.Size.Width; ++i)
+            {
+                for (int j = 0; j < bmp.Size.Height; ++j)
+                {
+                    byte[] neighbours = new byte[filterSize * filterSize];
+                    int a = 0;
+                    for (int k = -filterSize / 2; k <= filterSize / 2; ++k)
+                    {
+                        for (int l = -filterSize / 2; l <= filterSize / 2; ++l)
+                        {
+                            neighbours[a++] = bmp[i + k, j + l].R;
+                        }
+                    }
+
+                    Color color = bmp[i, j];
+                    byte newColor;
+                    Array.Sort(neighbours);
+                    if (neighbours.Length % 2 == 1)
+                        newColor = neighbours[neighbours.Length / 2];
+                    else
+                        newColor = (byte)((neighbours[neighbours.Length / 2] + neighbours[(neighbours.Length / 2) + 1]) / 2);
+                    bmp[i, j] = Color.FromArgb(color.A, newColor, newColor, newColor);
+                }
+            }
+            bmp.Unlock();
+            bitmap = bmp.Bitmap;
+            pictureBox1.Image = bitmap;
+            pictureBox1.Refresh();
+            drawHistogram();
+
+        }
+
     }
 }
