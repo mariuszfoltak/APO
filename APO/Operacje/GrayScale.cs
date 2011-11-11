@@ -7,7 +7,7 @@ using System.Drawing.Imaging;
 
 namespace APO.Operacje
 {
-    class GrayScale : APO.Operacje.IFilter
+    class GrayScale : IFilter
     {
         private bool m_hasDialog;
 

@@ -62,32 +62,19 @@ namespace APO
 
         private void metodaPierwszaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
-
-            if (activeChild != null)
-            {
-                activeChild.Metoda1();
-            }
+            useFilter(new HistogramEqualization());
         }
 
         private void metodaDrugaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
-
-            if (activeChild != null)
-            {
-                activeChild.Metoda2();
-            }
+            useFilter(new HistogramEqualization(
+                HistogramEqualization.EqualizationMethod.RandomLevel));
         }
 
         private void metodaTrzeciaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
-
-            if (activeChild != null)
-            {
-                activeChild.Metoda3();
-            }
+            useFilter(new HistogramEqualization(
+                HistogramEqualization.EqualizationMethod.AdjacencyLevel));
         }
 
         private void negacjaToolStripMenuItem_Click(object sender, EventArgs e)
