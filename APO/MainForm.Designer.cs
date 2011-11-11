@@ -60,9 +60,21 @@
             this.xORToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lab3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wyosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.filtracjaMedianowaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.szkiletyzacjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.erozjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.spójnaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dylatacjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.otwarcieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zamknięcieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.spójnaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.spójnaToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.spójnaToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.spójneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.spójneToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.spójnaToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.spójnaToolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -309,7 +321,11 @@
             this.lab3ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.wyosToolStripMenuItem,
             this.filtracjaMedianowaToolStripMenuItem,
-            this.szkiletyzacjaToolStripMenuItem});
+            this.szkiletyzacjaToolStripMenuItem,
+            this.erozjaToolStripMenuItem,
+            this.dylatacjaToolStripMenuItem,
+            this.otwarcieToolStripMenuItem,
+            this.zamknięcieToolStripMenuItem});
             this.lab3ToolStripMenuItem.Name = "lab3ToolStripMenuItem";
             this.lab3ToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.lab3ToolStripMenuItem.Text = "Lab 3";
@@ -320,10 +336,6 @@
             this.wyosToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.wyosToolStripMenuItem.Text = "Wyostrzanie i wygładzanie";
             this.wyosToolStripMenuItem.Click += new System.EventHandler(this.wyosToolStripMenuItem_Click);
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // filtracjaMedianowaToolStripMenuItem
             // 
@@ -338,6 +350,102 @@
             this.szkiletyzacjaToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.szkiletyzacjaToolStripMenuItem.Text = "Szkieletyzacja";
             this.szkiletyzacjaToolStripMenuItem.Click += new System.EventHandler(this.szkiletyzacjaToolStripMenuItem_Click);
+            // 
+            // erozjaToolStripMenuItem
+            // 
+            this.erozjaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.spójnaToolStripMenuItem,
+            this.spójnaToolStripMenuItem4});
+            this.erozjaToolStripMenuItem.Name = "erozjaToolStripMenuItem";
+            this.erozjaToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.erozjaToolStripMenuItem.Text = "Erozja";
+            // 
+            // spójnaToolStripMenuItem
+            // 
+            this.spójnaToolStripMenuItem.Name = "spójnaToolStripMenuItem";
+            this.spójnaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.spójnaToolStripMenuItem.Text = "4-spójna";
+            this.spójnaToolStripMenuItem.Click += new System.EventHandler(this.spójnaToolStripMenuItem_Click);
+            // 
+            // dylatacjaToolStripMenuItem
+            // 
+            this.dylatacjaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.spójnaToolStripMenuItem1,
+            this.spójnaToolStripMenuItem5});
+            this.dylatacjaToolStripMenuItem.Name = "dylatacjaToolStripMenuItem";
+            this.dylatacjaToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.dylatacjaToolStripMenuItem.Text = "Dylatacja";
+            // 
+            // otwarcieToolStripMenuItem
+            // 
+            this.otwarcieToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.spójnaToolStripMenuItem2,
+            this.spójneToolStripMenuItem1});
+            this.otwarcieToolStripMenuItem.Name = "otwarcieToolStripMenuItem";
+            this.otwarcieToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.otwarcieToolStripMenuItem.Text = "Otwarcie";
+            // 
+            // zamknięcieToolStripMenuItem
+            // 
+            this.zamknięcieToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.spójnaToolStripMenuItem3,
+            this.spójneToolStripMenuItem});
+            this.zamknięcieToolStripMenuItem.Name = "zamknięcieToolStripMenuItem";
+            this.zamknięcieToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.zamknięcieToolStripMenuItem.Text = "Zamknięcie";
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // spójnaToolStripMenuItem1
+            // 
+            this.spójnaToolStripMenuItem1.Name = "spójnaToolStripMenuItem1";
+            this.spójnaToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.spójnaToolStripMenuItem1.Text = "4-spójna";
+            this.spójnaToolStripMenuItem1.Click += new System.EventHandler(this.spójnaToolStripMenuItem1_Click);
+            // 
+            // spójnaToolStripMenuItem2
+            // 
+            this.spójnaToolStripMenuItem2.Name = "spójnaToolStripMenuItem2";
+            this.spójnaToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.spójnaToolStripMenuItem2.Text = "4-spójne";
+            this.spójnaToolStripMenuItem2.Click += new System.EventHandler(this.spójnaToolStripMenuItem2_Click);
+            // 
+            // spójnaToolStripMenuItem3
+            // 
+            this.spójnaToolStripMenuItem3.Name = "spójnaToolStripMenuItem3";
+            this.spójnaToolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
+            this.spójnaToolStripMenuItem3.Text = "4-spójne";
+            this.spójnaToolStripMenuItem3.Click += new System.EventHandler(this.spójnaToolStripMenuItem3_Click);
+            // 
+            // spójneToolStripMenuItem
+            // 
+            this.spójneToolStripMenuItem.Name = "spójneToolStripMenuItem";
+            this.spójneToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.spójneToolStripMenuItem.Text = "8-spójne";
+            this.spójneToolStripMenuItem.Click += new System.EventHandler(this.spójneToolStripMenuItem_Click);
+            // 
+            // spójneToolStripMenuItem1
+            // 
+            this.spójneToolStripMenuItem1.Name = "spójneToolStripMenuItem1";
+            this.spójneToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.spójneToolStripMenuItem1.Text = "8-spójne";
+            this.spójneToolStripMenuItem1.Click += new System.EventHandler(this.spójneToolStripMenuItem1_Click);
+            // 
+            // spójnaToolStripMenuItem4
+            // 
+            this.spójnaToolStripMenuItem4.Name = "spójnaToolStripMenuItem4";
+            this.spójnaToolStripMenuItem4.Size = new System.Drawing.Size(152, 22);
+            this.spójnaToolStripMenuItem4.Text = "8-spójna";
+            this.spójnaToolStripMenuItem4.Click += new System.EventHandler(this.spójnaToolStripMenuItem4_Click);
+            // 
+            // spójnaToolStripMenuItem5
+            // 
+            this.spójnaToolStripMenuItem5.Name = "spójnaToolStripMenuItem5";
+            this.spójnaToolStripMenuItem5.Size = new System.Drawing.Size(152, 22);
+            this.spójnaToolStripMenuItem5.Text = "8-spójna";
+            this.spójnaToolStripMenuItem5.Click += new System.EventHandler(this.spójnaToolStripMenuItem5_Click);
             // 
             // MainForm
             // 
@@ -397,6 +505,18 @@
         private System.Windows.Forms.ToolStripMenuItem wyosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem filtracjaMedianowaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem szkiletyzacjaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem erozjaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem spójnaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dylatacjaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem otwarcieToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem zamknięcieToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem spójnaToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem spójnaToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem spójnaToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem spójneToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem spójnaToolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem spójnaToolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem spójneToolStripMenuItem1;
     }
 }
 

@@ -303,5 +303,82 @@ namespace APO
 
             activeChild.Szkieletyzacja();
         }
+
+        private void spójnaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Picture activeChild = (Picture)this.ActiveMdiChild;
+
+            if (activeChild == null)
+                return;
+            activeChild.Erozja(4);
+        }
+
+        private void spójnaToolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            Picture activeChild = (Picture)this.ActiveMdiChild;
+
+            if (activeChild == null)
+                return;
+            activeChild.Erozja(8);
+        }
+
+        private void spójnaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Picture activeChild = (Picture)this.ActiveMdiChild;
+
+            if (activeChild == null)
+                return;
+            activeChild.Dylatacja(4);
+        }
+
+        private void spójnaToolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            Picture activeChild = (Picture)this.ActiveMdiChild;
+
+            if (activeChild == null)
+                return;
+            activeChild.Dylatacja(8);
+        }
+
+        private void spójnaToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Picture activeChild = (Picture)this.ActiveMdiChild;
+
+            if (activeChild == null)
+                return;
+            activeChild.Erozja(4);
+            activeChild.Dylatacja(4);
+        }
+
+        private void spójneToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Picture activeChild = (Picture)this.ActiveMdiChild;
+
+            if (activeChild == null)
+                return;
+            activeChild.Erozja(8);
+            activeChild.Dylatacja(8);
+        }
+
+        private void spójnaToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            Picture activeChild = (Picture)this.ActiveMdiChild;
+
+            if (activeChild == null)
+                return;
+            activeChild.Dylatacja(4);
+            activeChild.Erozja(4);
+        }
+
+        private void spójneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Picture activeChild = (Picture)this.ActiveMdiChild;
+
+            if (activeChild == null)
+                return;
+            activeChild.Dylatacja(8);
+            activeChild.Erozja(8);
+        }
+
     }
 }

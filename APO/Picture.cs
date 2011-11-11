@@ -635,40 +635,43 @@ namespace APO
         public void ApplyMask(int[,] mask, int divisor)
         {
             FastBitmap bmp = new FastBitmap(bitmap);
-            FastBitmap bmp2 = new FastBitmap((Bitmap)bmp.Bitmap.Clone());
+            FastBitmap bitmap2 = new FastBitmap(bitmap);
 
-            if (divisor == 0)
-                divisor = 1;
+            if (divisor == 0) divisor = 1;
 
-            int size = mask.GetLength(0) / 2;
-            Point[,] temp = new Point[mask.GetLength(0), mask.GetLength(0)];
+            int size = (int)Math.Sqrt(mask.Length);
+            Point[,] temp = new Point[size, size];
 
-            for (int i = -size; i <= size; ++i)
-                for (int j = -size; j <= size; ++j)
-                    temp[i + size, j + size] = new Point(i, j);
+            int index = size - size / 2 - 1;
+            for (int i = -index; i <= index; i++)
+                for (int j = -index; j <= index; j++)
+                    temp[i + index, j + index] = new Point(i, j);
 
-            for (int i = size; i < bmp.Width - size; ++i)
+            for (int x = index; x < bmp.Width - index; x++)
             {
-                for (int j = size; j < bmp.Height - size; ++j)
+                for (int y = index; y < bmp.Height - index; y++)
                 {
                     int newColor = 0;
-                    for (int k = 0; k < mask.GetLength(0); ++k)
+                    for (int k = 0; k < size; k++)
                     {
-                        for (int l = 0; l < mask.GetLength(0); ++l)
+                        for (int l = 0; l < size; l++)
                         {
-                            Color color = bmp[i + temp[k, l].X, j + temp[k, l].Y];
-                            newColor += mask[k, l] * color.R;
+                            byte oldColor = bmp[x + temp[k, l].X, y + temp[k, l].Y];
+                            newColor += mask[k, l] * oldColor;
                         }
                     }
                     newColor /= divisor;
 
-                    newColor = Math.Max(0, Math.Min(newColor, 255));
-                    bmp2[i, j] = Color.FromArgb(255, newColor, newColor, newColor);
+                    // Skalowanie: Metoda 3
+                    if (newColor > bitmap2.Levels - 1) newColor = bitmap2.Levels - 1;
+                    else if (newColor < 0) newColor = 0;
+
+                    bitmap2[x, y] = (byte)newColor;
                 }
             }
 
-            bmp2.Unlock();
-            bitmap = bmp2.Bitmap;
+            bitmap2.Unlock();
+            bitmap = bitmap2.Bitmap;
             pictureBox1.Image = bitmap;
             pictureBox1.Refresh();
             drawHistogram();
@@ -679,28 +682,21 @@ namespace APO
             FastBitmap bmp = new FastBitmap(bitmap);
 
             int filterSize = value;
-            for (int i = 0; i < bmp.Size.Width; ++i)
+            for (int x = 0; x < bmp.Width; x++)
             {
-                for (int j = 0; j < bmp.Size.Height; ++j)
+                for (int y = 0; y < bmp.Height; y++)
                 {
                     byte[] neighbours = new byte[filterSize * filterSize];
                     int a = 0;
                     for (int k = -filterSize / 2; k <= filterSize / 2; ++k)
-                    {
                         for (int l = -filterSize / 2; l <= filterSize / 2; ++l)
-                        {
-                            neighbours[a++] = bmp[i + k, j + l].R;
-                        }
-                    }
-
-                    Color color = bmp[i, j];
-                    byte newColor;
+                            neighbours[a++] = bmp[x + k, y + l];
+                                        
                     Array.Sort(neighbours);
                     if (neighbours.Length % 2 == 1)
-                        newColor = neighbours[neighbours.Length / 2];
+                        bmp[x, y] = neighbours[neighbours.Length / 2];
                     else
-                        newColor = (byte)((neighbours[neighbours.Length / 2] + neighbours[(neighbours.Length / 2) + 1]) / 2);
-                    bmp[i, j] = Color.FromArgb(color.A, newColor, newColor, newColor);
+                        bmp[x, y] = (byte)Math.Min((neighbours[neighbours.Length / 2] + neighbours[(neighbours.Length / 2) + 1]) / 2, bmp.Levels - 1);
                 }
             }
             bmp.Unlock();
@@ -724,7 +720,7 @@ namespace APO
             {
                 for (int j = 0; j < bmp.Height; ++j)
                 {
-                    img[i, j] = bmp[i, j].B < 128;
+                    img[i, j] = bmp[i, j] < 128;
                 }
             }
 
@@ -777,9 +773,113 @@ namespace APO
             {
                 for (int y = 0; y < H; ++y)
                 {
-                    bmp[x, y] = img[x, y] ? Color.Black : Color.White;
+                    bmp[x, y] = (byte)(img[x, y] ? 0 : bmp.Levels - 1);
                 }
             }
+
+            bmp.Unlock();
+            bitmap = bmp.Bitmap;
+            pictureBox1.Image = bitmap;
+            pictureBox1.Refresh();
+            drawHistogram();
+        }
+        public void Erozja(int spojnosc)
+        {
+            FastBitmap bmp = new FastBitmap(bitmap);
+
+            int i, j, pam;
+            int[,] erode = new int[bmp.Width, bmp.Height];
+            int[,] tab = new int[bmp.Width, bmp.Height];
+
+            for (int y = 0; y < bmp.Height; y++)
+                for (int x = 0; x < bmp.Width; x++)
+                    tab[x, y] = bmp[x, y];
+
+            for (i = 1; i < bmp.Height - 1; i++)
+            {
+                for (j = 1; j < bmp.Width - 1; j++)
+                {
+                    pam = tab[j, i];
+
+                    if (spojnosc == 4)
+                    {
+                        if (pam > tab[j + 1, i]) pam = tab[j + 1, i];
+                        if (pam > tab[j + 1, i + 1]) pam = tab[j + 1, i + 1];
+                        if (pam > tab[j, i + 1]) pam = tab[j, i + 1];
+                        if (pam > tab[j - 1, i + 1]) pam = tab[j - 1, i + 1];
+                        if (pam > tab[j - 1, i]) pam = tab[j - 1, i];
+                        if (pam > tab[j - 1, i - 1]) pam = tab[j - 1, i - 1];
+                        if (pam > tab[j, i - 1]) pam = tab[j, i - 1];
+                        if (pam > tab[j + 1, i - 1]) pam = tab[j + 1, i - 1];
+                    }
+                    else if (spojnosc == 8)
+                    {
+                        if (pam > tab[j + 1, i]) pam = tab[j + 1, i];
+                        if (pam > tab[j, i + 1]) pam = tab[j, i + 1];
+                        if (pam > tab[j - 1, i]) pam = tab[j - 1, i];
+                        if (pam > tab[j, i - 1]) pam = tab[j, i - 1];
+                    }
+
+                    erode[j, i] = pam;
+                }
+            }
+
+            for (i = 0; i < bmp.Height; i++)
+                for (j = 0; j < bmp.Width; j++)
+                    bmp[j, i] = (byte)erode[j, i];
+
+            bmp.Unlock();
+            bitmap = bmp.Bitmap;
+            pictureBox1.Image = bitmap;
+            pictureBox1.Refresh();
+            drawHistogram();
+        }
+
+        public void Dylatacja(int spojnosc)
+        {
+            FastBitmap bmp = new FastBitmap(bitmap);
+
+            int i, j, pam;
+            int[,] dilate = new int[bmp.Width, bmp.Height];
+            int[,] tab = new int[bmp.Width, bmp.Height];
+
+            for (int y = 0; y < bmp.Height; y++)
+                for (int x = 0; x < bmp.Width; x++)
+                    tab[x, y] = bmp[x, y];
+
+            for (i = 1; i < bmp.Height - 1; i++)
+            {
+                for (j = 1; j < bmp.Width - 1; j++)
+                {
+                    pam = tab[j, i];
+
+                    if (spojnosc == 4)
+                    {
+                        if (pam <= tab[j + 1, i]) pam = tab[j + 1, i];
+                        if (pam <= tab[j + 1, i + 1]) pam = tab[j + 1, i + 1];
+                        if (pam <= tab[j, i + 1]) pam = tab[j, i + 1];
+                        if (pam <= tab[j - 1, i + 1]) pam = tab[j - 1, i + 1];
+                        if (pam <= tab[j - 1, i]) pam = tab[j - 1, i];
+                        if (pam <= tab[j - 1, i - 1]) pam = tab[j - 1, i - 1];
+                        if (pam <= tab[j, i - 1]) pam = tab[j, i - 1];
+                        if (pam <= tab[j + 1, i - 1]) pam = tab[j + 1, i - 1];
+                    }
+                    else if (spojnosc == 8)
+                    {
+                        if (pam <= tab[j + 1, i]) pam = tab[j + 1, i];
+                        if (pam <= tab[j, i + 1]) pam = tab[j, i + 1];
+                        if (pam <= tab[j - 1, i]) pam = tab[j - 1, i];
+                        if (pam <= tab[j, i - 1]) pam = tab[j, i - 1];
+                    }
+
+                    dilate[j, i] = pam;
+                }
+            }
+
+            for (i = 0; i < bmp.Height; i++)
+                for (j = 0; j < bmp.Width; j++)
+                    bmp[j, i] = (byte)dilate[j, i];
+
             bmp.Unlock();
             bitmap = bmp.Bitmap;
             pictureBox1.Image = bitmap;
