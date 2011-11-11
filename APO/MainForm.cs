@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using APO.Operacje;
 
 namespace APO
 {
@@ -18,12 +19,23 @@ namespace APO
             InitializeComponent();
         }
 
+        private void useFilter(IFilter filter)
+        {
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
+
+            filter.setImage(activeChild.bitmap);
+
+            filter.Convert();
+
+            activeChild.refresh();
+        }
+
         private void otwórzToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() != DialogResult.OK)
                 return;
 
-            Picture picture = new Picture();
+            PictureForm picture = new PictureForm();
             picture.MdiParent = this;
             picture.Text = new StringBuilder("Obraz ").Append(++formCounter).ToString();
             picture.loadImage(openFileDialog1.FileName);
@@ -32,23 +44,16 @@ namespace APO
 
         private void konwertujDoSzarości8BitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (Picture)this.ActiveMdiChild;
-
-            // If there is an active child form, find the active control, which
-            // in this example should be a RichTextBox.
-            if (activeChild != null)
-            {
-                activeChild.MakeGrayscale3();
-            }
+            useFilter(new GrayScale());
         }
 
         private void duplikujToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (Picture)this.ActiveMdiChild;
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
 
             if (activeChild != null)
             {
-                Picture newChild = new Picture(activeChild);
+                PictureForm newChild = new PictureForm(activeChild);
                 newChild.Text = new StringBuilder("Obraz ").Append(++formCounter).ToString();
                 newChild.MdiParent = this;
                 newChild.Show();
@@ -57,37 +62,24 @@ namespace APO
 
         private void metodaPierwszaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (Picture)this.ActiveMdiChild;
-
-            if (activeChild != null)
-            {
-                activeChild.Metoda1();
-            }
+            useFilter(new HistogramEqualization());
         }
 
         private void metodaDrugaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (Picture)this.ActiveMdiChild;
-
-            if (activeChild != null)
-            {
-                activeChild.Metoda2();
-            }
+            useFilter(new HistogramEqualization(
+                HistogramEqualization.EqualizationMethod.RandomLevel));
         }
 
         private void metodaTrzeciaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (Picture)this.ActiveMdiChild;
-
-            if (activeChild != null)
-            {
-                activeChild.Metoda3();
-            }
+            useFilter(new HistogramEqualization(
+                HistogramEqualization.EqualizationMethod.AdjacencyLevel));
         }
 
         private void negacjaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (Picture)this.ActiveMdiChild;
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
 
             if (activeChild != null)
             {
@@ -97,7 +89,7 @@ namespace APO
 
         private void progowanieToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (Picture)this.ActiveMdiChild;
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
 
             if (activeChild == null)
                 return;
@@ -112,7 +104,7 @@ namespace APO
 
         private void redukcjaPoziomówSzarościToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (Picture)this.ActiveMdiChild;
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
 
             if (activeChild == null)
                 return;
@@ -127,7 +119,7 @@ namespace APO
 
         private void rozciaganieToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (Picture)this.ActiveMdiChild;
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
 
             if (activeChild == null)
                 return;
@@ -143,7 +135,7 @@ namespace APO
 
         private void kontrastToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (Picture)this.ActiveMdiChild;
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
 
             if (activeChild == null)
                 return;
@@ -158,7 +150,7 @@ namespace APO
 
         private void kontrastToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            Picture activeChild = (Picture)this.ActiveMdiChild;
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
 
             if (activeChild == null)
                 return;
@@ -173,7 +165,7 @@ namespace APO
 
         private void gammaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (Picture)this.ActiveMdiChild;
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
 
             if (activeChild == null)
                 return;
@@ -188,7 +180,7 @@ namespace APO
 
         private void dodawanieToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (Picture)this.ActiveMdiChild;
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
 
             if (activeChild == null)
                 return;
@@ -199,12 +191,12 @@ namespace APO
             if (dialog.ShowDialog() == DialogResult.Cancel)
                 return;
 
-            activeChild.add(((Picture)this.MdiChildren[dialog.combovalue]).bitmap);
+            activeChild.add(((PictureForm)this.MdiChildren[dialog.combovalue]).bitmap);
         }
 
         private void odejmowanieToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (Picture)this.ActiveMdiChild;
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
 
             if (activeChild == null)
                 return;
@@ -215,12 +207,12 @@ namespace APO
             if (dialog.ShowDialog() == DialogResult.Cancel)
                 return;
 
-            activeChild.sub(((Picture)this.MdiChildren[dialog.combovalue]).bitmap);
+            activeChild.sub(((PictureForm)this.MdiChildren[dialog.combovalue]).bitmap);
         }
 
         private void aNDToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (Picture)this.ActiveMdiChild;
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
 
             if (activeChild == null)
                 return;
@@ -231,12 +223,12 @@ namespace APO
             if (dialog.ShowDialog() == DialogResult.Cancel)
                 return;
 
-            activeChild.and(((Picture)this.MdiChildren[dialog.combovalue]).bitmap);
+            activeChild.and(((PictureForm)this.MdiChildren[dialog.combovalue]).bitmap);
         }
 
         private void oRToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (Picture)this.ActiveMdiChild;
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
 
             if (activeChild == null)
                 return;
@@ -247,12 +239,12 @@ namespace APO
             if (dialog.ShowDialog() == DialogResult.Cancel)
                 return;
 
-            activeChild.or(((Picture)this.MdiChildren[dialog.combovalue]).bitmap);
+            activeChild.or(((PictureForm)this.MdiChildren[dialog.combovalue]).bitmap);
         }
 
         private void xORToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (Picture)this.ActiveMdiChild;
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
 
             if (activeChild == null)
                 return;
@@ -263,12 +255,12 @@ namespace APO
             if (dialog.ShowDialog() == DialogResult.Cancel)
                 return;
 
-            activeChild.xor(((Picture)this.MdiChildren[dialog.combovalue]).bitmap);
+			activeChild.xor(((PictureForm)this.MdiChildren[dialog.combovalue]).bitmap);
         }
 
         private void wyosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (Picture)this.ActiveMdiChild;
+            Picture activeChild = (PictureForm)this.ActiveMdiChild;
 
             if (activeChild == null)
                 return;
@@ -282,7 +274,7 @@ namespace APO
 
         private void filtracjaMedianowaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (Picture)this.ActiveMdiChild;
+            Picture activeChild = (PictureForm)this.ActiveMdiChild;
 
             if (activeChild == null)
                 return;
@@ -296,7 +288,7 @@ namespace APO
 
         private void szkiletyzacjaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (Picture)this.ActiveMdiChild;
+            Picture activeChild = (PictureForm)this.ActiveMdiChild;
 
             if (activeChild == null)
                 return;
@@ -306,7 +298,7 @@ namespace APO
 
         private void spójnaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (Picture)this.ActiveMdiChild;
+            Picture activeChild = (PictureForm)this.ActiveMdiChild;
 
             if (activeChild == null)
                 return;
@@ -315,7 +307,7 @@ namespace APO
 
         private void spójnaToolStripMenuItem4_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (Picture)this.ActiveMdiChild;
+            Picture activeChild = (PictureForm)this.ActiveMdiChild;
 
             if (activeChild == null)
                 return;
@@ -324,7 +316,7 @@ namespace APO
 
         private void spójnaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (Picture)this.ActiveMdiChild;
+            Picture activeChild = (PictureForm)this.ActiveMdiChild;
 
             if (activeChild == null)
                 return;
@@ -333,7 +325,7 @@ namespace APO
 
         private void spójnaToolStripMenuItem5_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (Picture)this.ActiveMdiChild;
+            Picture activeChild = (PictureForm)this.ActiveMdiChild;
 
             if (activeChild == null)
                 return;
@@ -342,7 +334,7 @@ namespace APO
 
         private void spójnaToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (Picture)this.ActiveMdiChild;
+            Picture activeChild = (PictureForm)this.ActiveMdiChild;
 
             if (activeChild == null)
                 return;
@@ -352,7 +344,7 @@ namespace APO
 
         private void spójneToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (Picture)this.ActiveMdiChild;
+            Picture activeChild = (PictureForm)this.ActiveMdiChild;
 
             if (activeChild == null)
                 return;
@@ -362,7 +354,7 @@ namespace APO
 
         private void spójnaToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (Picture)this.ActiveMdiChild;
+            Picture activeChild = (PictureForm)this.ActiveMdiChild;
 
             if (activeChild == null)
                 return;
@@ -372,7 +364,7 @@ namespace APO
 
         private void spójneToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (Picture)this.ActiveMdiChild;
+            Picture activeChild = (PictureForm)this.ActiveMdiChild;
 
             if (activeChild == null)
                 return;
