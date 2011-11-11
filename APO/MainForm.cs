@@ -260,7 +260,7 @@ namespace APO
 
         private void wyosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (PictureForm)this.ActiveMdiChild;
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
 
             if (activeChild == null)
                 return;
@@ -274,7 +274,7 @@ namespace APO
 
         private void filtracjaMedianowaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (PictureForm)this.ActiveMdiChild;
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
 
             if (activeChild == null)
                 return;
@@ -288,7 +288,7 @@ namespace APO
 
         private void szkiletyzacjaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (PictureForm)this.ActiveMdiChild;
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
 
             if (activeChild == null)
                 return;
@@ -298,7 +298,7 @@ namespace APO
 
         private void spójnaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (PictureForm)this.ActiveMdiChild;
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
 
             if (activeChild == null)
                 return;
@@ -307,7 +307,7 @@ namespace APO
 
         private void spójnaToolStripMenuItem4_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (PictureForm)this.ActiveMdiChild;
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
 
             if (activeChild == null)
                 return;
@@ -316,7 +316,7 @@ namespace APO
 
         private void spójnaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (PictureForm)this.ActiveMdiChild;
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
 
             if (activeChild == null)
                 return;
@@ -325,7 +325,7 @@ namespace APO
 
         private void spójnaToolStripMenuItem5_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (PictureForm)this.ActiveMdiChild;
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
 
             if (activeChild == null)
                 return;
@@ -334,7 +334,7 @@ namespace APO
 
         private void spójnaToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (PictureForm)this.ActiveMdiChild;
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
 
             if (activeChild == null)
                 return;
@@ -344,7 +344,7 @@ namespace APO
 
         private void spójneToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (PictureForm)this.ActiveMdiChild;
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
 
             if (activeChild == null)
                 return;
@@ -354,7 +354,7 @@ namespace APO
 
         private void spójnaToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (PictureForm)this.ActiveMdiChild;
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
 
             if (activeChild == null)
                 return;
@@ -364,7 +364,7 @@ namespace APO
 
         private void spójneToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Picture activeChild = (PictureForm)this.ActiveMdiChild;
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
 
             if (activeChild == null)
                 return;
