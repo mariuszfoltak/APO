@@ -631,5 +631,47 @@ namespace APO
             pictureBox1.Refresh();
             drawHistogram();
         }
+
+        public void ApplyMask(int[,] mask, int divisor)
+        {
+            FastBitmap bmp = new FastBitmap(bitmap);
+            FastBitmap bmp2 = new FastBitmap((Bitmap)bmp.Bitmap.Clone());
+
+            if (divisor == 0)
+                divisor = 1;
+
+            int size = mask.GetLength(0) / 2;
+            Point[,] temp = new Point[mask.GetLength(0), mask.GetLength(0)];
+
+            for (int i = -size; i <= size; ++i)
+                for (int j = -size; j <= size; ++j)
+                    temp[i + size, j + size] = new Point(i, j);
+
+            for (int i = size; i < bmp.Width - size; ++i)
+            {
+                for (int j = size; j < bmp.Height - size; ++j)
+                {
+                    int newColor = 0;
+                    for (int k = 0; k < mask.GetLength(0); ++k)
+                    {
+                        for (int l = 0; l < mask.GetLength(0); ++l)
+                        {
+                            Color color = bmp[i + temp[k, l].X, j + temp[k, l].Y];
+                            newColor += mask[k, l] * color.R;
+                        }
+                    }
+                    newColor /= divisor;
+
+                    newColor = Math.Max(0, Math.Min(newColor, 255));
+                    bmp2[i, j] = Color.FromArgb(255, newColor, newColor, newColor);
+                }
+            }
+
+            bmp2.Unlock();
+            bitmap = bmp2.Bitmap;
+            pictureBox1.Image = bitmap;
+            pictureBox1.Refresh();
+            drawHistogram();
+        }
     }
 }

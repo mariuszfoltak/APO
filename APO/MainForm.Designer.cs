@@ -49,7 +49,6 @@
             this.progowanieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.redukcjaPoziomówSzarościToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rozciaganieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.jasnoscToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kontrastToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gammaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,6 +58,9 @@
             this.aNDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.oRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xORToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lab3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.wyosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -85,7 +87,8 @@
             this.plikToolStripMenuItem,
             this.obrazToolStripMenuItem,
             this.spłaszczanieHistogramuToolStripMenuItem,
-            this.operacjaToolStripMenuItem});
+            this.operacjaToolStripMenuItem,
+            this.lab3ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(764, 24);
@@ -233,10 +236,6 @@
             this.rozciaganieToolStripMenuItem.Text = "Rozciaganie";
             this.rozciaganieToolStripMenuItem.Click += new System.EventHandler(this.rozciaganieToolStripMenuItem_Click);
             // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
             // jasnoscToolStripMenuItem
             // 
             this.jasnoscToolStripMenuItem.Name = "jasnoscToolStripMenuItem";
@@ -285,23 +284,42 @@
             // aNDToolStripMenuItem
             // 
             this.aNDToolStripMenuItem.Name = "aNDToolStripMenuItem";
-            this.aNDToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aNDToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
             this.aNDToolStripMenuItem.Text = "AND";
             this.aNDToolStripMenuItem.Click += new System.EventHandler(this.aNDToolStripMenuItem_Click);
             // 
             // oRToolStripMenuItem
             // 
             this.oRToolStripMenuItem.Name = "oRToolStripMenuItem";
-            this.oRToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.oRToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
             this.oRToolStripMenuItem.Text = "OR";
             this.oRToolStripMenuItem.Click += new System.EventHandler(this.oRToolStripMenuItem_Click);
             // 
             // xORToolStripMenuItem
             // 
             this.xORToolStripMenuItem.Name = "xORToolStripMenuItem";
-            this.xORToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.xORToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
             this.xORToolStripMenuItem.Text = "XOR";
             this.xORToolStripMenuItem.Click += new System.EventHandler(this.xORToolStripMenuItem_Click);
+            // 
+            // lab3ToolStripMenuItem
+            // 
+            this.lab3ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.wyosToolStripMenuItem});
+            this.lab3ToolStripMenuItem.Name = "lab3ToolStripMenuItem";
+            this.lab3ToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.lab3ToolStripMenuItem.Text = "Lab 3";
+            // 
+            // wyosToolStripMenuItem
+            // 
+            this.wyosToolStripMenuItem.Name = "wyosToolStripMenuItem";
+            this.wyosToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.wyosToolStripMenuItem.Text = "Wyostrzanie i wygładzanie";
+            this.wyosToolStripMenuItem.Click += new System.EventHandler(this.wyosToolStripMenuItem_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // MainForm
             // 
@@ -357,6 +375,8 @@
         private System.Windows.Forms.ToolStripMenuItem aNDToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem oRToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem xORToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lab3ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem wyosToolStripMenuItem;
     }
 }
 

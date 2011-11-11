@@ -265,5 +265,19 @@ namespace APO
 
             activeChild.xor(((Picture)this.MdiChildren[dialog.combovalue]).bitmap);
         }
+
+        private void wyosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Picture activeChild = (Picture)this.ActiveMdiChild;
+
+            if (activeChild == null)
+                return;
+
+            Mask3x3Form mask3x3Form = new Mask3x3Form();
+
+            if (mask3x3Form.ShowDialog() == DialogResult.Cancel)
+                return;
+            activeChild.ApplyMask(mask3x3Form.Mask, mask3x3Form.Divisor);
+        }
     }
 }
