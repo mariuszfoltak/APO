@@ -372,5 +372,10 @@ namespace APO
             activeChild.Erozja(8);
         }
 
+        private void uniwersalnyOperatorPunktowyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new UOPDialog().Show();
+        }
+
     }
 }

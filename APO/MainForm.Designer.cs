@@ -64,17 +64,18 @@
             this.szkiletyzacjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.erozjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.spójnaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.spójnaToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.dylatacjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.otwarcieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.zamknięcieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.spójnaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.spójnaToolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.otwarcieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.spójnaToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.spójneToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.zamknięcieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.spójnaToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.spójneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.spójneToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.spójnaToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.spójnaToolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.uniwersalnyOperatorPunktowyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -217,7 +218,8 @@
             this.gammaToolStripMenuItem,
             this.dodawanieToolStripMenuItem,
             this.odejmowanieToolStripMenuItem,
-            this.logiczneToolStripMenuItem});
+            this.logiczneToolStripMenuItem,
+            this.uniwersalnyOperatorPunktowyToolStripMenuItem});
             this.operacjaToolStripMenuItem.Name = "operacjaToolStripMenuItem";
             this.operacjaToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.operacjaToolStripMenuItem.Text = "Operacja";
@@ -225,63 +227,63 @@
             // negacjaToolStripMenuItem
             // 
             this.negacjaToolStripMenuItem.Name = "negacjaToolStripMenuItem";
-            this.negacjaToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.negacjaToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
             this.negacjaToolStripMenuItem.Text = "Negacja";
             this.negacjaToolStripMenuItem.Click += new System.EventHandler(this.negacjaToolStripMenuItem_Click);
             // 
             // progowanieToolStripMenuItem
             // 
             this.progowanieToolStripMenuItem.Name = "progowanieToolStripMenuItem";
-            this.progowanieToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.progowanieToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
             this.progowanieToolStripMenuItem.Text = "Progowanie";
             this.progowanieToolStripMenuItem.Click += new System.EventHandler(this.progowanieToolStripMenuItem_Click);
             // 
             // redukcjaPoziomówSzarościToolStripMenuItem
             // 
             this.redukcjaPoziomówSzarościToolStripMenuItem.Name = "redukcjaPoziomówSzarościToolStripMenuItem";
-            this.redukcjaPoziomówSzarościToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.redukcjaPoziomówSzarościToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
             this.redukcjaPoziomówSzarościToolStripMenuItem.Text = "Redukcja poziomów szarości";
             this.redukcjaPoziomówSzarościToolStripMenuItem.Click += new System.EventHandler(this.redukcjaPoziomówSzarościToolStripMenuItem_Click);
             // 
             // rozciaganieToolStripMenuItem
             // 
             this.rozciaganieToolStripMenuItem.Name = "rozciaganieToolStripMenuItem";
-            this.rozciaganieToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.rozciaganieToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
             this.rozciaganieToolStripMenuItem.Text = "Rozciaganie";
             this.rozciaganieToolStripMenuItem.Click += new System.EventHandler(this.rozciaganieToolStripMenuItem_Click);
             // 
             // jasnoscToolStripMenuItem
             // 
             this.jasnoscToolStripMenuItem.Name = "jasnoscToolStripMenuItem";
-            this.jasnoscToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.jasnoscToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
             this.jasnoscToolStripMenuItem.Text = "Jasność";
             this.jasnoscToolStripMenuItem.Click += new System.EventHandler(this.kontrastToolStripMenuItem_Click);
             // 
             // kontrastToolStripMenuItem
             // 
             this.kontrastToolStripMenuItem.Name = "kontrastToolStripMenuItem";
-            this.kontrastToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.kontrastToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
             this.kontrastToolStripMenuItem.Text = "Kontrast";
             this.kontrastToolStripMenuItem.Click += new System.EventHandler(this.kontrastToolStripMenuItem_Click_1);
             // 
             // gammaToolStripMenuItem
             // 
             this.gammaToolStripMenuItem.Name = "gammaToolStripMenuItem";
-            this.gammaToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.gammaToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
             this.gammaToolStripMenuItem.Text = "Gamma";
             this.gammaToolStripMenuItem.Click += new System.EventHandler(this.gammaToolStripMenuItem_Click);
             // 
             // dodawanieToolStripMenuItem
             // 
             this.dodawanieToolStripMenuItem.Name = "dodawanieToolStripMenuItem";
-            this.dodawanieToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.dodawanieToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
             this.dodawanieToolStripMenuItem.Text = "Dodawanie";
             this.dodawanieToolStripMenuItem.Click += new System.EventHandler(this.dodawanieToolStripMenuItem_Click);
             // 
             // odejmowanieToolStripMenuItem
             // 
             this.odejmowanieToolStripMenuItem.Name = "odejmowanieToolStripMenuItem";
-            this.odejmowanieToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.odejmowanieToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
             this.odejmowanieToolStripMenuItem.Text = "Odejmowanie";
             this.odejmowanieToolStripMenuItem.Click += new System.EventHandler(this.odejmowanieToolStripMenuItem_Click);
             // 
@@ -292,7 +294,7 @@
             this.oRToolStripMenuItem,
             this.xORToolStripMenuItem});
             this.logiczneToolStripMenuItem.Name = "logiczneToolStripMenuItem";
-            this.logiczneToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.logiczneToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
             this.logiczneToolStripMenuItem.Text = "Logiczne";
             // 
             // aNDToolStripMenuItem
@@ -363,9 +365,16 @@
             // spójnaToolStripMenuItem
             // 
             this.spójnaToolStripMenuItem.Name = "spójnaToolStripMenuItem";
-            this.spójnaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.spójnaToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.spójnaToolStripMenuItem.Text = "4-spójna";
             this.spójnaToolStripMenuItem.Click += new System.EventHandler(this.spójnaToolStripMenuItem_Click);
+            // 
+            // spójnaToolStripMenuItem4
+            // 
+            this.spójnaToolStripMenuItem4.Name = "spójnaToolStripMenuItem4";
+            this.spójnaToolStripMenuItem4.Size = new System.Drawing.Size(120, 22);
+            this.spójnaToolStripMenuItem4.Text = "8-spójna";
+            this.spójnaToolStripMenuItem4.Click += new System.EventHandler(this.spójnaToolStripMenuItem4_Click);
             // 
             // dylatacjaToolStripMenuItem
             // 
@@ -376,6 +385,20 @@
             this.dylatacjaToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.dylatacjaToolStripMenuItem.Text = "Dylatacja";
             // 
+            // spójnaToolStripMenuItem1
+            // 
+            this.spójnaToolStripMenuItem1.Name = "spójnaToolStripMenuItem1";
+            this.spójnaToolStripMenuItem1.Size = new System.Drawing.Size(120, 22);
+            this.spójnaToolStripMenuItem1.Text = "4-spójna";
+            this.spójnaToolStripMenuItem1.Click += new System.EventHandler(this.spójnaToolStripMenuItem1_Click);
+            // 
+            // spójnaToolStripMenuItem5
+            // 
+            this.spójnaToolStripMenuItem5.Name = "spójnaToolStripMenuItem5";
+            this.spójnaToolStripMenuItem5.Size = new System.Drawing.Size(120, 22);
+            this.spójnaToolStripMenuItem5.Text = "8-spójna";
+            this.spójnaToolStripMenuItem5.Click += new System.EventHandler(this.spójnaToolStripMenuItem5_Click);
+            // 
             // otwarcieToolStripMenuItem
             // 
             this.otwarcieToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -384,6 +407,20 @@
             this.otwarcieToolStripMenuItem.Name = "otwarcieToolStripMenuItem";
             this.otwarcieToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.otwarcieToolStripMenuItem.Text = "Otwarcie";
+            // 
+            // spójnaToolStripMenuItem2
+            // 
+            this.spójnaToolStripMenuItem2.Name = "spójnaToolStripMenuItem2";
+            this.spójnaToolStripMenuItem2.Size = new System.Drawing.Size(120, 22);
+            this.spójnaToolStripMenuItem2.Text = "4-spójne";
+            this.spójnaToolStripMenuItem2.Click += new System.EventHandler(this.spójnaToolStripMenuItem2_Click);
+            // 
+            // spójneToolStripMenuItem1
+            // 
+            this.spójneToolStripMenuItem1.Name = "spójneToolStripMenuItem1";
+            this.spójneToolStripMenuItem1.Size = new System.Drawing.Size(120, 22);
+            this.spójneToolStripMenuItem1.Text = "8-spójne";
+            this.spójneToolStripMenuItem1.Click += new System.EventHandler(this.spójneToolStripMenuItem1_Click);
             // 
             // zamknięcieToolStripMenuItem
             // 
@@ -394,58 +431,30 @@
             this.zamknięcieToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.zamknięcieToolStripMenuItem.Text = "Zamknięcie";
             // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // spójnaToolStripMenuItem1
-            // 
-            this.spójnaToolStripMenuItem1.Name = "spójnaToolStripMenuItem1";
-            this.spójnaToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.spójnaToolStripMenuItem1.Text = "4-spójna";
-            this.spójnaToolStripMenuItem1.Click += new System.EventHandler(this.spójnaToolStripMenuItem1_Click);
-            // 
-            // spójnaToolStripMenuItem2
-            // 
-            this.spójnaToolStripMenuItem2.Name = "spójnaToolStripMenuItem2";
-            this.spójnaToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
-            this.spójnaToolStripMenuItem2.Text = "4-spójne";
-            this.spójnaToolStripMenuItem2.Click += new System.EventHandler(this.spójnaToolStripMenuItem2_Click);
-            // 
             // spójnaToolStripMenuItem3
             // 
             this.spójnaToolStripMenuItem3.Name = "spójnaToolStripMenuItem3";
-            this.spójnaToolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
+            this.spójnaToolStripMenuItem3.Size = new System.Drawing.Size(120, 22);
             this.spójnaToolStripMenuItem3.Text = "4-spójne";
             this.spójnaToolStripMenuItem3.Click += new System.EventHandler(this.spójnaToolStripMenuItem3_Click);
             // 
             // spójneToolStripMenuItem
             // 
             this.spójneToolStripMenuItem.Name = "spójneToolStripMenuItem";
-            this.spójneToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.spójneToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.spójneToolStripMenuItem.Text = "8-spójne";
             this.spójneToolStripMenuItem.Click += new System.EventHandler(this.spójneToolStripMenuItem_Click);
             // 
-            // spójneToolStripMenuItem1
+            // openFileDialog1
             // 
-            this.spójneToolStripMenuItem1.Name = "spójneToolStripMenuItem1";
-            this.spójneToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.spójneToolStripMenuItem1.Text = "8-spójne";
-            this.spójneToolStripMenuItem1.Click += new System.EventHandler(this.spójneToolStripMenuItem1_Click);
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // spójnaToolStripMenuItem4
+            // uniwersalnyOperatorPunktowyToolStripMenuItem
             // 
-            this.spójnaToolStripMenuItem4.Name = "spójnaToolStripMenuItem4";
-            this.spójnaToolStripMenuItem4.Size = new System.Drawing.Size(152, 22);
-            this.spójnaToolStripMenuItem4.Text = "8-spójna";
-            this.spójnaToolStripMenuItem4.Click += new System.EventHandler(this.spójnaToolStripMenuItem4_Click);
-            // 
-            // spójnaToolStripMenuItem5
-            // 
-            this.spójnaToolStripMenuItem5.Name = "spójnaToolStripMenuItem5";
-            this.spójnaToolStripMenuItem5.Size = new System.Drawing.Size(152, 22);
-            this.spójnaToolStripMenuItem5.Text = "8-spójna";
-            this.spójnaToolStripMenuItem5.Click += new System.EventHandler(this.spójnaToolStripMenuItem5_Click);
+            this.uniwersalnyOperatorPunktowyToolStripMenuItem.Name = "uniwersalnyOperatorPunktowyToolStripMenuItem";
+            this.uniwersalnyOperatorPunktowyToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.uniwersalnyOperatorPunktowyToolStripMenuItem.Text = "Uniwersalny operator punktowy";
+            this.uniwersalnyOperatorPunktowyToolStripMenuItem.Click += new System.EventHandler(this.uniwersalnyOperatorPunktowyToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -517,6 +526,7 @@
         private System.Windows.Forms.ToolStripMenuItem spójnaToolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem spójnaToolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem spójneToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem uniwersalnyOperatorPunktowyToolStripMenuItem;
     }
 }
 

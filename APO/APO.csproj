@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{3F9BBD18-6400-4042-85BE-4690C01A0446}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -93,6 +93,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Mask3x3Form.resx">
       <DependentUpon>Mask3x3Form.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="PictureForm.resx">
       <DependentUpon>PictureForm.cs</DependentUpon>
@@ -101,6 +102,10 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UOPDialog.resx">
+      <DependentUpon>UOPDialog.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
@@ -115,6 +120,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="UOPDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UOPDialog.Designer.cs">
+      <DependentUpon>UOPDialog.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
