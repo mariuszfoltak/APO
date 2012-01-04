@@ -283,7 +283,7 @@ namespace APO
             if (activeChild == null)
                 return;
 
-            myCustomDialog dialog = new myCustomDialog("Gamma", "Podaj o ile procent zwiększyć gamme");
+            myCustomDialog dialog = new myCustomDialog("Filtracja Medianowa", "Podaj rozmiar otoczenia (jedna cyfra)");
 
             if (dialog.ShowDialog() == DialogResult.Cancel)
                 return;
