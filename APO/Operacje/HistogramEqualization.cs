@@ -308,5 +308,15 @@ namespace APO.Operacje
                 }
             }
         }
+
+        #region IFilter Members
+
+
+        public bool showDialog()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

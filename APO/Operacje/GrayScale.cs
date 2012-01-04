@@ -61,5 +61,15 @@ namespace APO.Operacje
             //dispose the Graphics object
             g.Dispose();
         }
+
+        #region IFilter Members
+
+
+        public bool showDialog()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

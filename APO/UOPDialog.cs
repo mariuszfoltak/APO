@@ -11,14 +11,14 @@ namespace APO
 {
     public partial class UOPDialog : Form
     {
-        private List<Point> points = new List<Point>();
+        public List<Point> points = new List<Point>();
         private Graphics graphicsObj;
         private Point draggingPoint;
         private bool isDragging = false;
 
         BackgroundWorker bw = new BackgroundWorker();
 
-        class Point
+        public class Point
         {
             public int X;
             public int Y;
@@ -100,41 +100,6 @@ namespace APO
             graphicsObj.DrawLine(myPen, 0, 255, 255, 0);
         }
 
-        private void panel1_Click(object sender, EventArgs e)
-        {
-            //MouseEventArgs me = (MouseEventArgs)e;
-            //if (me.Button == MouseButtons.Right)
-            //{
-            //    for (int i = 0; i < points.Count; i++)
-            //    {
-            //        if (points[i].X - 3 < me.X && points[i].X + 3 > me.X)
-            //            if (points[i].Y - 3 < me.Y && points[i].Y + 3 > me.Y)
-            //            {
-            //                points.Remove(points[i]);
-            //                break;
-            //            }
-            //    }
-            //}
-            //else
-            //{
-            //    points.Add(new Point(((MouseEventArgs)e).X, ((MouseEventArgs)e).Y));
-            //    points.Sort(new PointComparer());
-            //}
-            //Point a = new Point(0,255);
-
-            //Pen myPen = new Pen(System.Drawing.Color.Black, 1);
-
-            //clearPanel();
-
-            //for (int i = 0; i < points.Count; i++)
-            //{
-            //    graphicsObj.DrawLine(myPen, a, points[i]);
-            //    a = points[i];
-            //    graphicsObj.FillRectangle(Brushes.Black, new Rectangle(a.X - 2, a.Y - 2, 5, 5));
-            //}
-            //graphicsObj.DrawLine(myPen, a, new Point(255,0));
-        }
-
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -146,7 +111,6 @@ namespace APO
                     {
                         isDragging = true;
                         draggingPoint = points[i];
-                        label1.Text = "Udało się!";
                         if (bw.IsBusy != true)
                         {
                             bw.RunWorkerAsync();
@@ -162,8 +126,11 @@ namespace APO
             {
                 draggingPoint.X = e.X;
                 draggingPoint.Y = e.Y;
-                label1.Text = "X: " + draggingPoint.X.ToString() + " Y: " + draggingPoint.Y.ToString();
-                
+                if (draggingPoint.X > 255) draggingPoint.X = 255;
+                else if (draggingPoint.X < 0) draggingPoint.X = 0;
+                if (draggingPoint.Y > 255) draggingPoint.Y = 255;
+                else if (draggingPoint.Y < 0) draggingPoint.Y = 0;
+                label1.Text = "Pozycja X: " + draggingPoint.X.ToString() + " Y: " + draggingPoint.Y.ToString();
             }
         }
 
@@ -203,6 +170,9 @@ namespace APO
             }
         }
 
-
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            btnOK.DialogResult = DialogResult.OK;
+        }
     }
 }

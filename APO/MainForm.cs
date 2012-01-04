@@ -25,6 +25,10 @@ namespace APO
 
             filter.setImage(activeChild.bitmap);
 
+            if (filter.hasDialog)
+                if (!filter.showDialog())
+                    return;
+
             filter.Convert();
 
             activeChild.refresh();
@@ -374,7 +378,9 @@ namespace APO
 
         private void uniwersalnyOperatorPunktowyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new UOPDialog().Show();
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
+            if (activeChild != null)
+                useFilter(new UOP());
         }
 
     }

@@ -21,5 +21,7 @@ namespace APO.Operacje
         /// </summary>
         /// <param name="image">Obraz do konwersji</param>
         void setImage(Image image);
+
+        bool showDialog();
     }
 }
