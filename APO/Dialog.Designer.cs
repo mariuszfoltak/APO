@@ -35,6 +35,10 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.labelDesc2 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.trackBar2 = new System.Windows.Forms.TrackBar();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             this.SuspendLayout();
             // 
             // labelDesc
@@ -101,6 +105,22 @@
             this.comboBox1.TabIndex = 6;
             this.comboBox1.Visible = false;
             // 
+            // trackBar1
+            // 
+            this.trackBar1.Location = new System.Drawing.Point(12, 30);
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(198, 45);
+            this.trackBar1.TabIndex = 7;
+            this.trackBar1.Visible = false;
+            // 
+            // trackBar2
+            // 
+            this.trackBar2.Location = new System.Drawing.Point(12, 58);
+            this.trackBar2.Name = "trackBar2";
+            this.trackBar2.Size = new System.Drawing.Size(198, 45);
+            this.trackBar2.TabIndex = 8;
+            this.trackBar2.Visible = false;
+            // 
             // myCustomDialog
             // 
             this.AcceptButton = this.myAcceptButton;
@@ -108,6 +128,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.myCancelButton;
             this.ClientSize = new System.Drawing.Size(222, 138);
+            this.Controls.Add(this.trackBar2);
+            this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.labelDesc2);
@@ -120,6 +142,8 @@
             this.MinimizeBox = false;
             this.Name = "myCustomDialog";
             this.Text = "Dialog2";
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,5 +158,7 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label labelDesc2;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.TrackBar trackBar2;
     }
 }

@@ -157,6 +157,23 @@ namespace APO
             drawHistogram();
         }
 
+        public void progowanie(int progDown, int progUp)
+        {
+            for (int i = 0; i < bitmap.Height; i++)
+            {
+                for (int j = 0; j < bitmap.Width; j++)
+                {
+                    Color c = bitmap.GetPixel(j, i);
+
+                    int color = ((c.R < progDown || c.R > progUp) ? 255 : 0);
+
+                    bitmap.SetPixel(j, i, Color.FromArgb(color, color, color));
+                }
+            }
+            pictureBox1.Refresh();
+            drawHistogram();
+        }
+
         public void redukcjaPoziomowSzarosci(int poziomy)
         {
             double prog = 256 / (poziomy-1);
