@@ -401,5 +401,12 @@ namespace APO
                 activeChild.progowanie(Convert.ToInt32(dialog.value), Convert.ToInt32(dialog.value2));
         }
 
+        private void segmentacjaPrzezRozszerzanieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
+            if (activeChild != null)
+                useFilter(new Operacje.Segmentation.RegionGrowing());
+        }
+
     }
 }

@@ -78,6 +78,7 @@
             this.segmeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.segmentacjaPrzezProgowanieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.segmentacjaPrzezRozszerzanieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -458,7 +459,8 @@
             // segmeToolStripMenuItem
             // 
             this.segmeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.segmentacjaPrzezProgowanieToolStripMenuItem});
+            this.segmentacjaPrzezProgowanieToolStripMenuItem,
+            this.segmentacjaPrzezRozszerzanieToolStripMenuItem});
             this.segmeToolStripMenuItem.Name = "segmeToolStripMenuItem";
             this.segmeToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
             this.segmeToolStripMenuItem.Text = "Segmentacja";
@@ -473,6 +475,13 @@
             this.segmentacjaPrzezProgowanieToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
             this.segmentacjaPrzezProgowanieToolStripMenuItem.Text = "Segmentacja przez progowanie";
             this.segmentacjaPrzezProgowanieToolStripMenuItem.Click += new System.EventHandler(this.segmentacjaPrzezProgowanieToolStripMenuItem_Click);
+            // 
+            // segmentacjaPrzezRozszerzanieToolStripMenuItem
+            // 
+            this.segmentacjaPrzezRozszerzanieToolStripMenuItem.Name = "segmentacjaPrzezRozszerzanieToolStripMenuItem";
+            this.segmentacjaPrzezRozszerzanieToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.segmentacjaPrzezRozszerzanieToolStripMenuItem.Text = "Segmentacja przez rozszerzanie";
+            this.segmentacjaPrzezRozszerzanieToolStripMenuItem.Click += new System.EventHandler(this.segmentacjaPrzezRozszerzanieToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -547,6 +556,7 @@
         private System.Windows.Forms.ToolStripMenuItem uniwersalnyOperatorPunktowyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem segmeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem segmentacjaPrzezProgowanieToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem segmentacjaPrzezRozszerzanieToolStripMenuItem;
     }
 }
 
