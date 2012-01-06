@@ -463,7 +463,7 @@
             this.segmeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.segmentacjaPrzezProgowanieToolStripMenuItem,
             this.segmentacjaPrzezRozszerzanieToolStripMenuItem,
-            this.histogramówRóżnicPoziomówJasnościToolStripMenuItem});
+            this.histogramówRóżnicPoziomówJasnościToolStripMenuItem,
             this.segmentacjaPrzezDzielenieToolStripMenuItem});
             this.segmeToolStripMenuItem.Name = "segmeToolStripMenuItem";
             this.segmeToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
