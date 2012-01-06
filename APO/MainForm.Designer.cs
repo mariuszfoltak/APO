@@ -80,10 +80,11 @@
             this.segmentacjaPrzezRozszerzanieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.histogramówRóżnicPoziomówJasnościToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.segmentacjaPrzezDzielenieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.segmentacjaProbalistycznaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opisKształtuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.algorytmŻółwiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.segmentacjaProbalistycznaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.mozaikaVoronoiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -469,7 +470,8 @@
             this.segmentacjaPrzezRozszerzanieToolStripMenuItem,
             this.histogramówRóżnicPoziomówJasnościToolStripMenuItem,
             this.segmentacjaPrzezDzielenieToolStripMenuItem,
-            this.segmentacjaProbalistycznaToolStripMenuItem});
+            this.segmentacjaProbalistycznaToolStripMenuItem,
+            this.mozaikaVoronoiToolStripMenuItem});
             this.segmeToolStripMenuItem.Name = "segmeToolStripMenuItem";
             this.segmeToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
             this.segmeToolStripMenuItem.Text = "Segmentacja";
@@ -502,9 +504,12 @@
             this.segmentacjaPrzezDzielenieToolStripMenuItem.Text = "Segmentacja przez dzielenie";
             this.segmentacjaPrzezDzielenieToolStripMenuItem.Click += new System.EventHandler(this.segmentacjaPrzezDzielenieToolStripMenuItem_Click);
             // 
-            // openFileDialog1
+            // segmentacjaProbalistycznaToolStripMenuItem
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.segmentacjaProbalistycznaToolStripMenuItem.Name = "segmentacjaProbalistycznaToolStripMenuItem";
+            this.segmentacjaProbalistycznaToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
+            this.segmentacjaProbalistycznaToolStripMenuItem.Text = "Segmentacja probalistyczna";
+            this.segmentacjaProbalistycznaToolStripMenuItem.Click += new System.EventHandler(this.segmentacjaProbalistycznaToolStripMenuItem_Click);
             // 
             // opisKształtuToolStripMenuItem
             // 
@@ -521,12 +526,16 @@
             this.algorytmŻółwiaToolStripMenuItem.Text = "Algorytm żółwia";
             this.algorytmŻółwiaToolStripMenuItem.Click += new System.EventHandler(this.algorytmŻółwiaToolStripMenuItem_Click);
             // 
-            // segmentacjaProbalistycznaToolStripMenuItem
+            // openFileDialog1
             // 
-            this.segmentacjaProbalistycznaToolStripMenuItem.Name = "segmentacjaProbalistycznaToolStripMenuItem";
-            this.segmentacjaProbalistycznaToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
-            this.segmentacjaProbalistycznaToolStripMenuItem.Text = "Segmentacja probalistyczna";
-            this.segmentacjaProbalistycznaToolStripMenuItem.Click += new System.EventHandler(this.segmentacjaProbalistycznaToolStripMenuItem_Click);
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // mozaikaVoronoiToolStripMenuItem
+            // 
+            this.mozaikaVoronoiToolStripMenuItem.Name = "mozaikaVoronoiToolStripMenuItem";
+            this.mozaikaVoronoiToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
+            this.mozaikaVoronoiToolStripMenuItem.Text = "Mozaika Voronoi";
+            this.mozaikaVoronoiToolStripMenuItem.Click += new System.EventHandler(this.mozaikaVoronoiToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -607,6 +616,7 @@
         private System.Windows.Forms.ToolStripMenuItem opisKształtuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem algorytmŻółwiaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem segmentacjaProbalistycznaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mozaikaVoronoiToolStripMenuItem;
     }
 }
 

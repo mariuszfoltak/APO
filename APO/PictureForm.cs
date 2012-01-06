@@ -900,5 +900,138 @@ namespace APO
             pictureBox1.Refresh();
             drawHistogram();
 	    }
+        public void Voronoi(int n, int r)
+        {
+            int i, j;
+            int[,] V = new int[bitmap.Width, bitmap.Height];
+
+            for (i = 0; i < bitmap.Height; i++)
+            {
+                for (j = 0; j < bitmap.Width; j++)
+                {
+                    V[j, i] = 0;
+                }
+            }
+            Color c = new Color();
+            Color c2 = new Color(); ;
+
+            Random rand = new Random();
+
+            int[] x = new int[n];
+            int[] y = new int[n];
+
+            int[] x_new = new int[n];
+            int[] y_new = new int[n];
+
+            int[] sr = new int[n];
+            int[] licz = new int[n];
+
+            double odl;
+
+            for (i = 0; i < n; i++)
+            {
+                x[i] = rand.Next(0, bitmap.Width);
+                y[i] = rand.Next(0, bitmap.Height);
+                x_new[i] = -1;
+                y_new[i] = -1;
+                licz[i] = 0;
+                sr[i] = 0;
+            }
+
+            int a, min = 0;
+            double test = 0;
+
+            for (i = 0; i < bitmap.Height; i++)
+            {
+                for (j = 0; j < bitmap.Width; j++)
+                {
+
+                    for (a = 0; a < n; a++)
+                    {
+                        odl = ((j - x[a]) * (j - x[a])) + ((i - y[a]) * (i - y[a]));
+                        odl = (double)Math.Sqrt(odl);
+
+                        if (a == 0)
+                        {
+                            min = 1;
+                            test = odl;
+                        }
+                        else
+                        {
+                            if (odl < test)
+                            {
+                                min = a + 1;
+                                test = odl;
+                            }
+                        }
+                    }
+
+                    V[j, i] = min;
+
+                    // znajdowanie nowego miejsca centralnego
+                    c = bitmap.GetPixel(j, i);
+
+                    if (x_new[min - 1] == -1 && y_new[min - 1] == -1)
+                    {
+                        c2 = bitmap.GetPixel(x[min - 1], y[min - 1]);
+                    }
+                    else
+                    {
+                        c2 = bitmap.GetPixel(x_new[min - 1], y_new[min - 1]);
+                    }
+
+                    // min || max
+                    if ((r == 1 && c.R < c2.R) || (r == 2 && c.R > c2.R))
+                    {
+                        x_new[min - 1] = j;
+                        y_new[min - 1] = i;
+                    }
+
+                }
+            }
+
+            for (a = 0; a < n; a++)
+            {
+                if (x_new[a] != -1 && y_new[a] != -1)
+                {
+                    x[a] = x_new[a];
+                    y[a] = y_new[a];
+
+                    x_new[a] = -1;
+                    y_new[a] = -1;
+                }
+            }
+
+            // srednia obszaru
+            for (i = 0; i < bitmap.Height; i++)
+            {
+                for (j = 0; j < bitmap.Width; j++)
+                {
+                    c = bitmap.GetPixel(j, i);
+
+                    sr[(V[j, i] - 1)] += c.R;
+                    licz[(V[j, i] - 1)]++;
+                }
+            }
+
+            for (i = 0; i < n; i++)
+            {
+                if (licz[i] != 0)
+                {
+                    sr[i] = sr[i] / licz[i];
+                }
+            }
+
+            for (i = 0; i < bitmap.Height; i++)
+            {
+                for (j = 0; j < bitmap.Width; j++)
+                {
+                    bitmap.SetPixel(j, i, Color.FromArgb(sr[(V[j, i] - 1)], sr[(V[j, i] - 1)], sr[(V[j, i] - 1)]));
+                }
+            }
+            pictureBox1.Image = bitmap;
+            pictureBox1.Refresh();
+            drawHistogram();
+        }
     }
 }

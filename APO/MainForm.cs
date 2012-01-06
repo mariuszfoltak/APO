@@ -445,11 +445,25 @@ namespace APO
             if (activeChild == null)
                 return;
 
-            myCustomDialog dialog = new myCustomDialog("Progowanie", "Podaj wartość progu:", "Podaj wartość maksymalnej liczby regionów");
+            myCustomDialog dialog = new myCustomDialog("Segmaentacja probalistyczna", "Podaj wartość progu:", "Podaj wartość maksymalnej liczby regionów");
 
             if (dialog.ShowDialog() == DialogResult.Cancel)
                 return;
             activeChild.segmProba(Convert.ToInt32(dialog.value), Convert.ToInt32(dialog.value2));
+        }
+
+        private void mozaikaVoronoiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
+
+            if (activeChild == null)
+                return;
+
+            myCustomDialog dialog = new myCustomDialog("Mozaika Voronoi", "Liczba miejsc centalnych (100:10000):", "Kryterium wyróżnienie (1-min,2-max)");
+
+            if (dialog.ShowDialog() == DialogResult.Cancel)
+                return;
+            activeChild.Voronoi(Convert.ToInt32(dialog.value), Convert.ToInt32(dialog.value2));
         }
     }
 }
