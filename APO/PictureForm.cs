@@ -769,7 +769,7 @@ namespace APO
             pictureBox1.Refresh();
             drawHistogram();
         }
-        public void segmProba (int max_reg, int prog)
+        public void segmProba(int prog, int max_reg)
 	    {         
 		    int [] l_region = new int [max_reg];
 		    int [] srednia = new int [max_reg];
