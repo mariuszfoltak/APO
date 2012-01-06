@@ -80,6 +80,7 @@
             this.segmentacjaPrzezRozszerzanieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.histogramówRóżnicPoziomówJasnościToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.segmentacjaPrzezDzielenieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -463,6 +464,7 @@
             this.segmentacjaPrzezProgowanieToolStripMenuItem,
             this.segmentacjaPrzezRozszerzanieToolStripMenuItem,
             this.histogramówRóżnicPoziomówJasnościToolStripMenuItem});
+            this.segmentacjaPrzezDzielenieToolStripMenuItem});
             this.segmeToolStripMenuItem.Name = "segmeToolStripMenuItem";
             this.segmeToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
             this.segmeToolStripMenuItem.Text = "Segmentacja";
@@ -491,6 +493,12 @@
             this.histogramówRóżnicPoziomówJasnościToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
             this.histogramówRóżnicPoziomówJasnościToolStripMenuItem.Text = "Histogram różnic poziomów jasności ";
             this.histogramówRóżnicPoziomówJasnościToolStripMenuItem.Click += new System.EventHandler(this.histogramówRóżnicPoziomówJasnościToolStripMenuItem_Click);
+            // segmentacjaPrzezDzielenieToolStripMenuItem
+            // 
+            this.segmentacjaPrzezDzielenieToolStripMenuItem.Name = "segmentacjaPrzezDzielenieToolStripMenuItem";
+            this.segmentacjaPrzezDzielenieToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.segmentacjaPrzezDzielenieToolStripMenuItem.Text = "Segmentacja przez dzielenie";
+            this.segmentacjaPrzezDzielenieToolStripMenuItem.Click += new System.EventHandler(this.segmentacjaPrzezDzielenieToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -567,6 +575,7 @@
         private System.Windows.Forms.ToolStripMenuItem segmentacjaPrzezProgowanieToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem segmentacjaPrzezRozszerzanieToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem histogramówRóżnicPoziomówJasnościToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem segmentacjaPrzezDzielenieToolStripMenuItem;
     }
 }
 

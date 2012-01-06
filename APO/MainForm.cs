@@ -420,5 +420,13 @@ namespace APO
             if (activeChild != null)
                 useFilter(new Operacje.Segmentation.RegionGrowing());
         }
+
+        private void segmentacjaPrzezDzielenieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
+            if (activeChild != null)
+                useFilter(new Operacje.Segmentation.Split());
+        }
     }
 }
