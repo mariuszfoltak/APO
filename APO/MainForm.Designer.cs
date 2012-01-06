@@ -58,6 +58,7 @@
             this.aNDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.oRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xORToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uniwersalnyOperatorPunktowyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lab3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wyosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.filtracjaMedianowaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -75,7 +76,9 @@
             this.spójnaToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.spójneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.uniwersalnyOperatorPunktowyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lab4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.segmentacjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.histogramRóżnicPoziomówJasnościToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -103,7 +106,8 @@
             this.obrazToolStripMenuItem,
             this.spłaszczanieHistogramuToolStripMenuItem,
             this.operacjaToolStripMenuItem,
-            this.lab3ToolStripMenuItem});
+            this.lab3ToolStripMenuItem,
+            this.lab4ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(764, 24);
@@ -318,6 +322,13 @@
             this.xORToolStripMenuItem.Text = "XOR";
             this.xORToolStripMenuItem.Click += new System.EventHandler(this.xORToolStripMenuItem_Click);
             // 
+            // uniwersalnyOperatorPunktowyToolStripMenuItem
+            // 
+            this.uniwersalnyOperatorPunktowyToolStripMenuItem.Name = "uniwersalnyOperatorPunktowyToolStripMenuItem";
+            this.uniwersalnyOperatorPunktowyToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.uniwersalnyOperatorPunktowyToolStripMenuItem.Text = "Uniwersalny operator punktowy";
+            this.uniwersalnyOperatorPunktowyToolStripMenuItem.Click += new System.EventHandler(this.uniwersalnyOperatorPunktowyToolStripMenuItem_Click);
+            // 
             // lab3ToolStripMenuItem
             // 
             this.lab3ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -449,12 +460,28 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // uniwersalnyOperatorPunktowyToolStripMenuItem
+            // lab4ToolStripMenuItem
             // 
-            this.uniwersalnyOperatorPunktowyToolStripMenuItem.Name = "uniwersalnyOperatorPunktowyToolStripMenuItem";
-            this.uniwersalnyOperatorPunktowyToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
-            this.uniwersalnyOperatorPunktowyToolStripMenuItem.Text = "Uniwersalny operator punktowy";
-            this.uniwersalnyOperatorPunktowyToolStripMenuItem.Click += new System.EventHandler(this.uniwersalnyOperatorPunktowyToolStripMenuItem_Click);
+            this.lab4ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.segmentacjaToolStripMenuItem});
+            this.lab4ToolStripMenuItem.Name = "lab4ToolStripMenuItem";
+            this.lab4ToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.lab4ToolStripMenuItem.Text = "Lab 4";
+            // 
+            // segmentacjaToolStripMenuItem
+            // 
+            this.segmentacjaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.histogramRóżnicPoziomówJasnościToolStripMenuItem});
+            this.segmentacjaToolStripMenuItem.Name = "segmentacjaToolStripMenuItem";
+            this.segmentacjaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.segmentacjaToolStripMenuItem.Text = "Segmentacja";
+            // 
+            // histogramRóżnicPoziomówJasnościToolStripMenuItem
+            // 
+            this.histogramRóżnicPoziomówJasnościToolStripMenuItem.Name = "histogramRóżnicPoziomówJasnościToolStripMenuItem";
+            this.histogramRóżnicPoziomówJasnościToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
+            this.histogramRóżnicPoziomówJasnościToolStripMenuItem.Text = "Histogram różnic poziomów jasności";
+            this.histogramRóżnicPoziomówJasnościToolStripMenuItem.Click += new System.EventHandler(this.histogramRóżnicPoziomówJasnościToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -527,6 +554,9 @@
         private System.Windows.Forms.ToolStripMenuItem spójnaToolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem spójneToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem uniwersalnyOperatorPunktowyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lab4ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem segmentacjaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem histogramRóżnicPoziomówJasnościToolStripMenuItem;
     }
 }
 

@@ -383,5 +383,18 @@ namespace APO
                 useFilter(new UOP());
         }
 
+        private void histogramRóżnicPoziomówJasnościToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
+
+            if (activeChild != null)
+            {
+                HistDiffForm newChild = new HistDiffForm(activeChild);
+                newChild.Text = new StringBuilder("Obraz ").Append(++formCounter).ToString();
+                newChild.MdiParent = this;
+                newChild.Show();
+            }
+        }
+
     }
 }
