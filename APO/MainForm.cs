@@ -19,6 +19,10 @@ namespace APO
             InitializeComponent();
         }
 
+        public void ustawStatusTekst(string text){
+            this.toolStripStatusLabel1.Text = text;
+        }
+
         private void useFilter(IFilter filter)
         {
             PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
@@ -39,7 +43,8 @@ namespace APO
             if (openFileDialog1.ShowDialog() != DialogResult.OK)
                 return;
 
-            PictureForm picture = new PictureForm();
+            PictureForm picture = new PictureForm(this
+);
             picture.MdiParent = this;
             picture.Text = new StringBuilder("Obraz ").Append(++formCounter).ToString();
             picture.loadImage(openFileDialog1.FileName);
@@ -464,6 +469,20 @@ namespace APO
             if (dialog.ShowDialog() == DialogResult.Cancel)
                 return;
             activeChild.Voronoi(Convert.ToInt32(dialog.value), Convert.ToInt32(dialog.value2));
+        }
+
+        private void segmentacjaWododziałowaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
+
+            if (activeChild == null)
+                return;
+
+            myCustomDialog dialog = new myCustomDialog("Segmentacja Wododziałowa", "Ilość kroków wygładzania (1:50):", "Wypełnienie regionów (1-z obr,2-śre. regi.)");
+
+            if (dialog.ShowDialog() == DialogResult.Cancel)
+                return;
+            activeChild.wododzial(Convert.ToInt32(dialog.value), Convert.ToInt32(dialog.value2));
         }
     }
 }

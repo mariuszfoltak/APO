@@ -81,10 +81,11 @@
             this.histogramówRóżnicPoziomówJasnościToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.segmentacjaPrzezDzielenieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.segmentacjaProbalistycznaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mozaikaVoronoiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opisKształtuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.algorytmŻółwiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.mozaikaVoronoiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.segmentacjaWododziałowaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -311,21 +312,21 @@
             // aNDToolStripMenuItem
             // 
             this.aNDToolStripMenuItem.Name = "aNDToolStripMenuItem";
-            this.aNDToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
+            this.aNDToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aNDToolStripMenuItem.Text = "AND";
             this.aNDToolStripMenuItem.Click += new System.EventHandler(this.aNDToolStripMenuItem_Click);
             // 
             // oRToolStripMenuItem
             // 
             this.oRToolStripMenuItem.Name = "oRToolStripMenuItem";
-            this.oRToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
+            this.oRToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.oRToolStripMenuItem.Text = "OR";
             this.oRToolStripMenuItem.Click += new System.EventHandler(this.oRToolStripMenuItem_Click);
             // 
             // xORToolStripMenuItem
             // 
             this.xORToolStripMenuItem.Name = "xORToolStripMenuItem";
-            this.xORToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
+            this.xORToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.xORToolStripMenuItem.Text = "XOR";
             this.xORToolStripMenuItem.Click += new System.EventHandler(this.xORToolStripMenuItem_Click);
             // 
@@ -468,10 +469,11 @@
             this.segmeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.segmentacjaPrzezProgowanieToolStripMenuItem,
             this.segmentacjaPrzezRozszerzanieToolStripMenuItem,
-            this.histogramówRóżnicPoziomówJasnościToolStripMenuItem,
             this.segmentacjaPrzezDzielenieToolStripMenuItem,
             this.segmentacjaProbalistycznaToolStripMenuItem,
-            this.mozaikaVoronoiToolStripMenuItem});
+            this.segmentacjaWododziałowaToolStripMenuItem,
+            this.mozaikaVoronoiToolStripMenuItem,
+            this.histogramówRóżnicPoziomówJasnościToolStripMenuItem});
             this.segmeToolStripMenuItem.Name = "segmeToolStripMenuItem";
             this.segmeToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
             this.segmeToolStripMenuItem.Text = "Segmentacja";
@@ -511,6 +513,13 @@
             this.segmentacjaProbalistycznaToolStripMenuItem.Text = "Segmentacja probalistyczna";
             this.segmentacjaProbalistycznaToolStripMenuItem.Click += new System.EventHandler(this.segmentacjaProbalistycznaToolStripMenuItem_Click);
             // 
+            // mozaikaVoronoiToolStripMenuItem
+            // 
+            this.mozaikaVoronoiToolStripMenuItem.Name = "mozaikaVoronoiToolStripMenuItem";
+            this.mozaikaVoronoiToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
+            this.mozaikaVoronoiToolStripMenuItem.Text = "Mozaika Voronoi";
+            this.mozaikaVoronoiToolStripMenuItem.Click += new System.EventHandler(this.mozaikaVoronoiToolStripMenuItem_Click);
+            // 
             // opisKształtuToolStripMenuItem
             // 
             this.opisKształtuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -530,12 +539,12 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // mozaikaVoronoiToolStripMenuItem
+            // segmentacjaWododziałowaToolStripMenuItem
             // 
-            this.mozaikaVoronoiToolStripMenuItem.Name = "mozaikaVoronoiToolStripMenuItem";
-            this.mozaikaVoronoiToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
-            this.mozaikaVoronoiToolStripMenuItem.Text = "Mozaika Voronoi";
-            this.mozaikaVoronoiToolStripMenuItem.Click += new System.EventHandler(this.mozaikaVoronoiToolStripMenuItem_Click);
+            this.segmentacjaWododziałowaToolStripMenuItem.Name = "segmentacjaWododziałowaToolStripMenuItem";
+            this.segmentacjaWododziałowaToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
+            this.segmentacjaWododziałowaToolStripMenuItem.Text = "Segmentacja wododziałowa";
+            this.segmentacjaWododziałowaToolStripMenuItem.Click += new System.EventHandler(this.segmentacjaWododziałowaToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -617,6 +626,7 @@
         private System.Windows.Forms.ToolStripMenuItem algorytmŻółwiaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem segmentacjaProbalistycznaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mozaikaVoronoiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem segmentacjaWododziałowaToolStripMenuItem;
     }
 }
 

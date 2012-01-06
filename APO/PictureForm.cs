@@ -14,9 +14,11 @@ namespace APO
     {
         private int[] histogram;
         public Bitmap bitmap;
+        private MainForm parent;
 
-        public PictureForm()
+        public PictureForm(MainForm parent)
         {
+            this.parent = parent;
             InitializeComponent();
         }
 
@@ -41,6 +43,7 @@ namespace APO
             int height = bitmap.Size.Height;
             int width = bitmap.Size.Width;
             pictureBox1.Width = width * 420 / height;
+            parent.ustawStatusTekst("Gotowe!");
         }
 
         public Bitmap CreateNonIndexedImage(Image src)
@@ -938,69 +941,84 @@ namespace APO
                 sr[i] = 0;
             }
 
-            int a, min = 0;
+            int a, min = 0, stabil = 0;
             double test = 0;
 
-            for (i = 0; i < bitmap.Height; i++)
+            parent.ustawStatusTekst("Tworzenie obszarów...");
+
+            while (stabil < 2)
             {
-                for (j = 0; j < bitmap.Width; j++)
+                for (i = 0; i < bitmap.Height; i++)
                 {
-
-                    for (a = 0; a < n; a++)
+                    for (j = 0; j < bitmap.Width; j++)
                     {
-                        odl = ((j - x[a]) * (j - x[a])) + ((i - y[a]) * (i - y[a]));
-                        odl = (double)Math.Sqrt(odl);
 
-                        if (a == 0)
+                        for (a = 0; a < n; a++)
                         {
-                            min = 1;
-                            test = odl;
+                            odl = ((j - x[a]) * (j - x[a])) + ((i - y[a]) * (i - y[a]));
+                            odl = (double)Math.Sqrt(odl);
+
+                            if (a == 0)
+                            {
+                                min = 1;
+                                test = odl;
+                            }
+                            else
+                            {
+                                if (odl < test)
+                                {
+                                    min = a + 1;
+                                    test = odl;
+                                }
+                            }
+                        }
+
+                        V[j, i] = min;
+
+                        // znajdowanie nowego miejsca centralnego
+                        c = bitmap.GetPixel(j, i);
+
+                        if (x_new[min - 1] == -1 && y_new[min - 1] == -1)
+                        {
+                            c2 = bitmap.GetPixel(x[min - 1], y[min - 1]);
                         }
                         else
                         {
-                            if (odl < test)
-                            {
-                                min = a + 1;
-                                test = odl;
-                            }
+                            c2 = bitmap.GetPixel(x_new[min - 1], y_new[min - 1]);
                         }
+
+                        // min || max
+                        if ((r == 1 && c.R < c2.R) || (r == 2 && c.R > c2.R))
+                        {
+                            x_new[min - 1] = j;
+                            y_new[min - 1] = i;
+                        }
+
                     }
-
-                    V[j, i] = min;
-
-                    // znajdowanie nowego miejsca centralnego
-                    c = bitmap.GetPixel(j, i);
-
-                    if (x_new[min - 1] == -1 && y_new[min - 1] == -1)
-                    {
-                        c2 = bitmap.GetPixel(x[min - 1], y[min - 1]);
-                    }
-                    else
-                    {
-                        c2 = bitmap.GetPixel(x_new[min - 1], y_new[min - 1]);
-                    }
-
-                    // min || max
-                    if ((r == 1 && c.R < c2.R) || (r == 2 && c.R > c2.R))
-                    {
-                        x_new[min - 1] = j;
-                        y_new[min - 1] = i;
-                    }
-
                 }
-            }
 
-            for (a = 0; a < n; a++)
-            {
-                if (x_new[a] != -1 && y_new[a] != -1)
+                for (a = 0; a < n; a++)
                 {
-                    x[a] = x_new[a];
-                    y[a] = y_new[a];
+                    if (x_new[a] != -1 && y_new[a] != -1)
+                    {
+                        x[a] = x_new[a];
+                        y[a] = y_new[a];
 
-                    x_new[a] = -1;
-                    y_new[a] = -1;
+                        x_new[a] = -1;
+                        y_new[a] = -1;
+                    }
                 }
+
+                stabil++;
+
+                if (stabil == 1)
+                {
+                    parent.ustawStatusTekst("Tworzenie obszarów dla nowych miejsc centralnych...");
+                }
+
             }
+
+            parent.ustawStatusTekst("Wypełnianie wyznaczonych obszarów...");
 
             // srednia obszaru
             for (i = 0; i < bitmap.Height; i++)
@@ -1032,6 +1050,439 @@ namespace APO
             pictureBox1.Image = bitmap;
             pictureBox1.Refresh();
             drawHistogram();
+            parent.ustawStatusTekst("Gotowe!");
+        }
+
+        public void wododzial(int kr, int opcja)
+        {
+            int wynik, x,Wi,Hi,i,j;
+            int poziom;
+            int krok = 0;
+
+            int[,] zdj = new int[bitmap.Width, bitmap.Height];
+
+            Wi = bitmap.Width;
+            Hi = bitmap.Height;
+
+            Bitmap ft = new Bitmap(bitmap);
+            Bitmap temp = new Bitmap(bitmap);
+
+            // Gauss
+            // ilość kroków -> kr
+
+            for (x = 0; x < kr; x++)
+            {
+                krok = x + 1;
+                parent.ustawStatusTekst("Wygładzanie obrazu - krok: " + krok.ToString());
+
+                for (i = 1; i < bitmap.Height - 1; i++)
+                {
+                    for (j = 1; j < bitmap.Width - 1; j++)
+                    {
+
+                        wynik = 1 * temp.GetPixel(j - 1, i - 1).R + 2 * temp.GetPixel(j, i - 1).R + 1 * temp.GetPixel(j + 1, i - 1).R;
+                        wynik += 2 * temp.GetPixel(j - 1, i).R + 4 * temp.GetPixel(j, i).R + 2 * temp.GetPixel(j + 1, i).R;
+                        wynik += 1 * temp.GetPixel(j - 1, i + 1).R + 2 * temp.GetPixel(j, i + 1).R + 1 * temp.GetPixel(j + 1, i + 1).R;
+
+                        wynik = (int)(wynik / 16);
+
+                        if (wynik > 255)
+                        {
+                            wynik = 255;
+                        }
+
+                        ft.SetPixel(j, i, Color.FromArgb(wynik, wynik, wynik));
+
+                    }
+                }
+
+                temp = new Bitmap(ft);
+
+            }
+
+            parent.ustawStatusTekst("Obliczanie gradientu morfologicznego...");
+
+            // Gradient morfologiczny
+            int pam;
+            int dilate, erosion;
+
+            for (i = 1; i < bitmap.Height - 1; i++)
+            {
+                for (j = 1; j < bitmap.Width - 1; j++)
+                {
+                    // Dylatacja - maks z sąsiedztwa
+                    pam = ft.GetPixel(j, i).R;
+
+                    if (pam < ft.GetPixel(j + 1, i).R)
+                    {
+                        pam = ft.GetPixel(j + 1, i).R;
+                    }
+
+                    if (pam < ft.GetPixel(j + 1, i + 1).R)
+                    {
+                        pam = ft.GetPixel(j + 1, i + 1).R;
+                    }
+
+                    if (pam < ft.GetPixel(j, i + 1).R)
+                    {
+                        pam = ft.GetPixel(j, i + 1).R;
+                    }
+
+                    if (pam < ft.GetPixel(j - 1, i + 1).R)
+                    {
+                        pam = ft.GetPixel(j - 1, i + 1).R;
+                    }
+
+                    if (pam < ft.GetPixel(j - 1, i).R)
+                    {
+                        pam = ft.GetPixel(j - 1, i).R;
+                    }
+
+                    if (pam < ft.GetPixel(j - 1, i - 1).R)
+                    {
+                        pam = ft.GetPixel(j - 1, i - 1).R;
+                    }
+
+                    if (pam < ft.GetPixel(j, i - 1).R)
+                    {
+                        pam = ft.GetPixel(j, i - 1).R;
+                    }
+
+                    if (pam < ft.GetPixel(j + 1, i - 1).R)
+                    {
+                        pam = ft.GetPixel(j + 1, i - 1).R;
+                    }
+
+                    dilate = pam;
+
+                    // Erozja - min z sąsiedztwa
+                    pam = ft.GetPixel(j, i).R;
+
+                    if (pam > ft.GetPixel(j + 1, i).R)
+                    {
+                        pam = ft.GetPixel(j + 1, i).R;
+                    }
+
+                    if (pam > ft.GetPixel(j + 1, i + 1).R)
+                    {
+                        pam = ft.GetPixel(j + 1, i + 1).R;
+                    }
+
+                    if (pam > ft.GetPixel(j, i + 1).R)
+                    {
+                        pam = ft.GetPixel(j, i + 1).R;
+                    }
+
+                    if (pam > ft.GetPixel(j - 1, i + 1).R)
+                    {
+                        pam = ft.GetPixel(j - 1, i + 1).R;
+                    }
+
+                    if (pam > ft.GetPixel(j - 1, i).R)
+                    {
+                        pam = ft.GetPixel(j - 1, i).R;
+                    }
+
+                    if (pam > ft.GetPixel(j - 1, i - 1).R)
+                    {
+                        pam = ft.GetPixel(j - 1, i - 1).R;
+                    }
+
+                    if (pam > ft.GetPixel(j, i - 1).R)
+                    {
+                        pam = ft.GetPixel(j, i - 1).R;
+                    }
+
+                    if (pam > ft.GetPixel(j + 1, i - 1).R)
+                    {
+                        pam = ft.GetPixel(j + 1, i - 1).R;
+                    }
+
+                    erosion = pam;
+
+                    pam = dilate - erosion;
+
+                    temp.SetPixel(j, i, Color.FromArgb(pam, pam, pam));
+                }
+            }
+
+            ft = new Bitmap(temp);
+
+            // Watershed
+            int region = 1;
+            int min = 0, max = 0;
+            int c, d, cx, dy;
+            int punkty = 0, wall = 0;
+
+
+            int[,] water = new int[bitmap.Width, bitmap.Height];
+            int[,] water_t = new int[bitmap.Width, bitmap.Height];
+
+            for (i = 0; i < bitmap.Height; i++)
+            {
+                for (j = 0; j < bitmap.Width; j++)
+                {
+                    if (j > 0 && j < bitmap.Width - 1 && i > 0 && i < bitmap.Height - 1)
+                    {
+                        if (j == 1 && i == 1)
+                        {
+                            min = ft.GetPixel(j, i).R;
+                            max = ft.GetPixel(j, i).R;
+                        }
+                        else
+                        {
+                            if (ft.GetPixel(j, i).R < min)
+                            {
+                                min = ft.GetPixel(j, i).R;
+                            }
+
+                            if (ft.GetPixel(j, i).R > max)
+                            {
+                                max = ft.GetPixel(j, i).R;
+                            }
+                        }
+
+                        water[j, i] = -1;
+                    }
+                    else
+                    {
+                        water[j, i] = 0;
+                        water_t[j, i] = 0;
+                    }
+
+                    zdj[j, i] = ft.GetPixel(j, i).R;
+                }
+            }
+
+            try
+            {
+
+                for (poziom = min; poziom <= max; poziom++)
+                {
+                    parent.ustawStatusTekst("Zalewanie poziomu: " + poziom.ToString());
+
+                    if (poziom == min)
+                    {
+                        // Krok 1 - pierwsze regiony
+                        for (i = 1; i < Hi - 1; i++)
+                        {
+                            for (j = 1; j < Wi - 1; j++)
+                            {
+                                if (zdj[j, i] == poziom && water[j, i] == -1)
+                                {
+                                    zalewanie(j, i, region, poziom, zdj, ref water);
+
+                                    region++;
+                                }
+                            }
+                        }
+
+                        for (i = 1; i < Hi - 1; i++)
+                        {
+                            for (j = 1; j < Wi - 1; j++)
+                            {
+                                water_t[j, i] = water[j, i];
+                            }
+                        }
+                    }
+                    else
+                    {
+                        // rozbudowa regionów
+                        do //while (punkty > 0)
+                        {
+                            punkty = 0;
+
+                            for (i = 1; i < Hi - 1; i++)
+                            {
+                                for (j = 1; j < Wi - 1; j++)
+                                {
+                                    if (water[j, i] > 0 && (water[j - 1, i - 1] == -1 || water[j - 1, i] == -1 || water[j - 1, i + 1] == -1 || water[j, i - 1] == -1 || water[j, i + 1] == -1 || water[j + 1, i - 1] == -1 || water[j + 1, i] == -1 || water[j + 1, i + 1] == -1))
+                                    {
+                                        for (d = i - 1; d <= i + 1; d++)
+                                        {
+                                            for (c = j - 1; c <= j + 1; c++)
+                                            {
+                                                if (water_t[c, d] == -1 && zdj[c, d] == poziom)
+                                                {
+                                                    wall = 0;
+
+                                                    for (dy = d - 1; dy <= d + 1; dy++)
+                                                    {
+                                                        for (cx = c - 1; cx <= c + 1; cx++)
+                                                        {
+                                                            if (water_t[cx, dy] > 0 && water_t[cx, dy] != water[j, i])
+                                                            {
+                                                                wall = 1;
+
+                                                                cx = c + 2;
+                                                                dy = d + 2;
+                                                            }
+                                                        }
+                                                    }
+
+                                                    if (wall == 1)
+                                                    {
+                                                        water_t[c, d] = -4;
+                                                    }
+                                                    else
+                                                    {
+                                                        water_t[c, d] = water[j, i];
+                                                    }
+
+                                                    punkty++;
+
+                                                } // end if water_t[c,d] == -1
+                                            }
+                                        }// end for c,d
+
+                                    } // end if glowny
+                                }
+                            } // end for j,i
+
+                            for (i = 1; i < Hi - 1; i++)
+                            {
+                                for (j = 1; j < Wi - 1; j++)
+                                {
+                                    water[j, i] = water_t[j, i];
+                                }
+                            }
+
+                        } while (punkty > 0);
+
+                        // nowe regiony
+                        for (i = 1; i < Hi - 1; i++)
+                        {
+                            for (j = 1; j < Wi - 1; j++)
+                            {
+                                if (zdj[j, i] == poziom && water[j, i] == -1)
+                                {
+                                    zalewanie(j, i, region, poziom, zdj, ref water);
+
+                                    region++;
+                                }
+                            }
+                        }
+
+                    }
+
+                }// for poziom
+
+                parent.ustawStatusTekst("Zaznaczanie regionów na obrazie...");
+
+                // obliczenie średniej regionów
+                int[] sr = new int[region];
+
+                if (opcja == 2)
+                {
+                    int[] li = new int[region];
+
+                    for (i = 0; i < region; i++)
+                    {
+                        sr[i] = 0;
+                        li[i] = 0;
+                    }
+
+                    for (i = 1; i < Hi - 1; i++)
+                    {
+                        for (j = 1; j < Wi - 1; j++)
+                        {
+                            if (water[j, i] > 0)
+                            {
+                                sr[(water[j, i] - 1)] += bitmap.GetPixel(j, i).R;
+                                li[(water[j, i] - 1)]++;
+                            }
+                        }
+                    }
+
+                    for (i = 0; i < region; i++)
+                    {
+                        if (li[i] != 0)
+                        {
+                            sr[i] = sr[i] / li[i];
+                        }
+                    }
+
+                }
+
+
+                for (i = 1; i < bitmap.Height - 1; i++)
+                {
+                    for (j = 1; j < bitmap.Width - 1; j++)
+                    {
+                        // granice wododziałów
+                        if (opcja == 1)
+                        {
+                            if (water[j, i] == -4)
+                            {
+                                bitmap.SetPixel(j, i, Color.FromArgb(255, 0, 0));
+                            }
+                        }
+
+                        // średnie regionów
+                        if (opcja == 2)
+                        {
+                            if (water[j, i] > 0)
+                            {
+                                bitmap.SetPixel(j, i, Color.FromArgb(sr[(water[j, i] - 1)], sr[(water[j, i] - 1)], sr[(water[j, i] - 1)]));
+                            }
+                            else
+                            {
+                                if (water[j, i] == -4)
+                                {
+                                    bitmap.SetPixel(j, i, Color.FromArgb(255, 0, 0));
+                                }
+                            }
+                        }
+
+                    }
+                }
+                pictureBox1.Image = bitmap;
+                drawHistogram();
+
+                // odrysowanie liczby regionów na obrazie
+                Graphics nabitmap = Graphics.FromImage(bitmap);
+                Graphics ekran = CreateGraphics();
+
+                Font liczba = new Font("Verdana", ekran.DpiY / nabitmap.DpiY * Font.SizeInPoints, FontStyle.Bold);
+
+                nabitmap.FillRectangle(Brushes.Snow, bitmap.Width - 55, 5, 55, 15);
+                nabitmap.DrawString((region - 1).ToString(), liczba, Brushes.DarkSlateGray, new Point(bitmap.Width - 55, 5));
+
+                nabitmap.Dispose();
+                ekran.Dispose();
+                pictureBox1.Image = bitmap;
+                pictureBox1.Refresh();
+                parent.ustawStatusTekst("Gotowe!");
+                Invalidate();
+
+            }
+            catch (System.StackOverflowException ex)
+            {
+                Invalidate();
+                parent.ustawStatusTekst("Błąd!");
+                MessageBox.Show("Przekroczono maksymalny rozmiar stosu w środowisku C# !!! \nProwdopododnie zbyt duża ilość pikseli tej samej barwy."
+                    + "\n\n---> Pomniejsz zdjęcie i spróbuj ponownie.\n\n" + ex, "Błąd środowiska C#", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        void zalewanie(int x, int y, int reg, int poz, int[,] z, ref int[,] wat)
+        {
+            if (z[x, y] == poz && wat[x, y] == -1)
+            {
+                wat[x, y] = reg;
+
+                zalewanie(x - 1, y - 1, reg, poz, z, ref wat);
+                zalewanie(x, y - 1, reg, poz, z, ref wat);
+                zalewanie(x + 1, y - 1, reg, poz, z, ref wat);
+
+                zalewanie(x - 1, y, reg, poz, z, ref wat);
+                zalewanie(x + 1, y, reg, poz, z, ref wat);
+
+                zalewanie(x - 1, y + 1, reg, poz, z, ref wat);
+                zalewanie(x, y + 1, reg, poz, z, ref wat);
+                zalewanie(x + 1, y + 1, reg, poz, z, ref wat);
+            }
         }
     }
 }
