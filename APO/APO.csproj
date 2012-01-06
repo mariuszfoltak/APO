@@ -81,6 +81,7 @@
     <Compile Include="Operacje\GrayScale.cs" />
     <Compile Include="Operacje\HistogramEqualization.cs" />
     <Compile Include="Operacje\IFilter.cs" />
+    <Compile Include="Operacje\Segmentation\RegionGrowing.cs" />
     <Compile Include="Operacje\UOP.cs" />
     <Compile Include="PictureForm.cs">
       <SubType>Form</SubType>

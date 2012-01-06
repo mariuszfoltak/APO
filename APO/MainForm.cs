@@ -383,18 +383,42 @@ namespace APO
                 useFilter(new UOP());
         }
 
-        private void histogramRóżnicPoziomówJasnościToolStripMenuItem_Click(object sender, EventArgs e)
+        private void histogramówRóżnicPoziomówJasnościToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
 
             if (activeChild != null)
             {
                 HistDiffForm newChild = new HistDiffForm(activeChild);
-                newChild.Text = new StringBuilder("Obraz ").Append(++formCounter).ToString();
+                newChild.Text = "Histogram różnic poziomów jasności";
                 newChild.MdiParent = this;
                 newChild.Show();
             }
         }
 
+        private void segmentacjaPrzezProgowanieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
+
+            if (activeChild == null)
+                return;
+
+            myCustomDialog dialog = new myCustomDialog("Progowanie", "Podaj wartość progowania od:", "Podaj wartość progowania do (lub pozostaw to pole puste):");
+
+            if (dialog.ShowDialog() == DialogResult.Cancel)
+                return;
+
+            if(dialog.value2.Equals(String.Empty))
+                activeChild.progowanie(Convert.ToInt32(dialog.value));
+            else
+                activeChild.progowanie(Convert.ToInt32(dialog.value), Convert.ToInt32(dialog.value2));
+        }
+
+        private void segmentacjaPrzezRozszerzanieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
+            if (activeChild != null)
+                useFilter(new Operacje.Segmentation.RegionGrowing());
+        }
     }
 }
