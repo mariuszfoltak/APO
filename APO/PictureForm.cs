@@ -766,5 +766,139 @@ namespace APO
             pictureBox1.Refresh();
             drawHistogram();
         }
+        public void segmProba (int max_reg, int prog)
+	    {         
+		    int [] l_region = new int [max_reg];
+		    int [] srednia = new int [max_reg];
+		    int [] wynik = new int [bitmap.Height*bitmap.Width];
+
+		    long [] suma_region = new long [max_reg];
+    		
+		    float [] temp = new float [max_reg];
+
+		    float suma=0,max_p;
+		    int i, j, a, x, down_min,min;
+		    int lacz=0, count_region=1;
+
+
+		    for(i=0;i<bitmap.Height;i++)
+		    {
+			    for(j=0;j<bitmap.Width;j++)
+			    {
+				    wynik[bitmap.Width*i+j]=0;
+			    }
+		    }
+
+		    for(i=0;i<max_reg;i++)
+		    {
+			    l_region[i]=0;
+			    srednia[i]=0;
+			    suma_region[i]=0;
+			    temp[i]=0;
+		    }
+
+
+		    for(i=1;i<bitmap.Height-1;i++)
+		    {
+			    for(j=1;j<bitmap.Width-1;j++)
+			    {
+				    if(i==1 && j==1)
+				    {
+					    wynik[bitmap.Width*i+j] = count_region;
+					    l_region[count_region-1] = 1;
+					    suma_region[count_region-1] = bitmap.GetPixel(j,i).R;
+					    srednia[count_region-1] = bitmap.GetPixel(j,i).R;
+				    }
+				    else
+				    {
+					    for(x=1;x<=count_region;x++)
+					    {
+					    down_min =Math.Abs( bitmap.GetPixel(j,i).R - srednia[x-1] );
+    						
+						    if( down_min == 0 )
+						    {
+							    temp[x-1] = (float)10/9;
+						    }
+						    else
+						    {
+							    temp[x-1] = (float)(1/down_min);
+						    }
+
+						    suma = suma + temp[x-1];
+					    }
+
+					    min = 1;
+					    max_p = temp[0]/suma;
+
+					    for(x=2;x<=count_region;x++)
+					    {
+						    if( max_p < temp[x-1]/suma )
+						    {
+							    max_p = temp[x-1]/suma;
+							    min = x;
+						    }
+					    }
+
+					    if( Math.Abs( bitmap.GetPixel(j,i).R - srednia[min-1] ) < prog)
+					    {
+						    lacz = 1;
+					    }
+
+					    if(lacz == 1)
+					    {
+						    a = min;					
+
+						    wynik[bitmap.Width*i+j] = a;
+						    l_region[a-1]++; 
+						    suma_region[a-1] = suma_region[a-1] + bitmap.GetPixel(j,i).R;
+						    srednia[a-1] = (int) suma_region[a-1]/l_region[a-1];
+					    }
+
+					    if( lacz == 0 && count_region < max_reg )
+					    {
+						    count_region++;						
+						    wynik[bitmap.Width*i+j] = count_region;
+						    l_region[count_region-1] = 1;
+						    suma_region[count_region-1] = bitmap.GetPixel(j,i).R;
+						    srednia[count_region-1] = bitmap.GetPixel(j,i).R;
+					    }
+					    else
+					    {
+						    lacz = 0;
+					    }
+    		
+
+					    suma = 0;
+				    }
+			    }
+		    }
+
+    	
+		    for(i=0;i<bitmap.Height;i++)
+		    {
+			    for(j=0;j<bitmap.Width;j++)
+			    {
+				    for(x=1;x<=count_region;x++)
+				    {
+					    if( x == wynik[bitmap.Width*i+j] )
+					    {					
+						     wynik[bitmap.Width*i+j] = srednia[x-1];
+					    }
+				    }
+			    }
+		    }
+
+		    for(i=0;i<bitmap.Height;i++)	
+		    {
+			    for(j=0;j<bitmap.Width;j++)
+			    {
+				    bitmap.SetPixel(j, i, Color.FromArgb(wynik[bitmap.Width*i+j], wynik[bitmap.Width*i+j],wynik[bitmap.Width*i+j]));
+			    }
+		    }
+    		
+            pictureBox1.Image = bitmap;
+            pictureBox1.Refresh();
+            drawHistogram();
+	    }
     }
 }

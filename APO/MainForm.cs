@@ -437,5 +437,19 @@ namespace APO
                 return;
             activeChild.zolw();
         }
+
+        private void segmentacjaProbalistycznaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
+
+            if (activeChild == null)
+                return;
+
+            myCustomDialog dialog = new myCustomDialog("Progowanie", "Podaj wartość progu:", "Podaj wartość maksymalnej liczby regionów");
+
+            if (dialog.ShowDialog() == DialogResult.Cancel)
+                return;
+            activeChild.segmProba(Convert.ToInt32(dialog.value), Convert.ToInt32(dialog.value2));
+        }
     }
 }
