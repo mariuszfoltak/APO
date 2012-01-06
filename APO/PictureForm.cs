@@ -630,5 +630,141 @@ namespace APO
             pictureBox1.Refresh();
             drawHistogram();
         }
+
+        public void zolw()
+        {
+            FastBitmap bmp = new FastBitmap(bitmap);
+
+            int[,] rtab = new int[bmp.Width, bmp.Height];
+            int[,] gtab = new int[bmp.Width, bmp.Height];
+            int[,] btab = new int[bmp.Width, bmp.Height];
+
+            int i, j;
+            for (i = 1; i < bmp.Width - 1; i++)
+            {
+                for (j = 1; j < bmp.Height - 1; j++)
+                {
+                    //rtab[i, j] = bmp[i, j].R;
+                    //gtab[i, j] = bmp[i, j].G;
+                    //btab[i, j] = bmp[i, j].B;
+                    rtab[i, j] = bmp[i, j];
+                    gtab[i, j] = bmp[i, j];
+                    btab[i, j] = bmp[i, j];
+                }
+            }
+            int d = 0;
+            int pami = 0, pamj = 0, ja = 0, ia = 0;
+            int x, y;
+            int[] wynik = new int[bmp.Width * bmp.Height];
+            int[] droga = new int[bmp.Width * bmp.Height];
+            for (i = 1; i < bmp.Height - 1; i++)
+            {
+                for (j = 1; j < bmp.Width - 1; j++)
+                {
+                    if (rtab[j, i] != 0 || gtab[j, i] != 0 || btab[j, i] != 0)
+                    {
+                        ja = j;
+                        ia = i;
+                        pamj = j;
+                        pami = i;
+                        //wynik[bmp.Width * i + j] = 255;
+                        wynik[bmp.Width * i + j] = bmp.Levels - 1;
+                        goto cont;
+                    }
+                }
+            }
+        cont:
+            j = pamj;
+            i = pami - 1;
+            //wynik[bmp.Width * i + j] = 255;
+            wynik[bmp.Width * i + j] = bmp.Levels - 1;
+            droga[d] = 1;
+            do
+            {
+                x = j - pamj;
+                y = i - pami;
+                pamj = j;
+                pami = i;
+                d++;
+                if (rtab[j, i] != 0 || gtab[j, i] != 0 || btab[j, i] != 0)
+                {
+                    if (x == 0 && y == (-1))
+                    {
+                        j--;
+                        droga[d] = 2;
+                    }
+                    if (x == 1 && y == 0)
+                    {
+                        i--;
+                        droga[d] = 1;
+                    }
+                    if (x == 0 && y == 1)
+                    {
+                        j++;
+                        droga[d] = 0;
+                    }
+                    if (x == (-1) && y == 0)
+                    {
+                        i++;
+                        droga[d] = 3;
+                    }
+                }
+                else
+                {
+                    if (x == 0 && y == (-1))
+                    {
+                        j++;
+                        droga[d] = 0;
+                    }
+                    if (x == 1 && y == 0)
+                    {
+                        i++;
+                        droga[d] = 3;
+                    }
+                    if (x == 0 && y == 1)
+                    {
+                        j--;
+                        droga[d] = 2;
+                    }
+                    if (x == (-1) && y == 0)
+                    {
+                        i--;
+                        droga[d] = 1;
+                    }
+                }
+                //wynik[bmp.Width * i + j] = 255;
+                wynik[bmp.Width * i + j] = bmp.Levels - 1;
+            }
+            while (j != ja || i != ia);
+            for (i = 0; i < bmp.Height; i++)
+            {
+                for (j = 0; j < bmp.Width; j++)
+                {
+                    //if (wynik[bmp.Width * i + j] == 255)
+                    if (wynik[bmp.Width * i + j] == bmp.Levels - 1)
+                    {
+                        //rtab[j, i] = 255;
+                        rtab[j, i] = bmp.Levels / 2;
+                        gtab[j, i] = 0;
+                        btab[j, i] = 0;
+                    }
+                }
+            }
+
+            for (i = 0; i < bmp.Width; i++)
+            {
+                for (j = 0; j < bmp.Height; j++)
+                {
+                    //bmp[i, j] = Color.FromArgb(rtab[i, j], gtab[i, j], btab[i, j]);
+                    bmp[i, j] = (byte)rtab[i, j];
+                }
+            }
+
+            bmp.Unlock();
+            bitmap = bmp.Bitmap;
+            pictureBox1.Image = bitmap;
+            pictureBox1.Refresh();
+            drawHistogram();
+        }
     }
 }

@@ -428,5 +428,14 @@ namespace APO
             if (activeChild != null)
                 useFilter(new Operacje.Segmentation.Split());
         }
+
+        private void algorytmŻółwiaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
+
+            if (activeChild == null)
+                return;
+            activeChild.zolw();
+        }
     }
 }

@@ -78,9 +78,11 @@
             this.segmeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.segmentacjaPrzezProgowanieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.segmentacjaPrzezRozszerzanieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.histogramówRóżnicPoziomówJasnościToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.segmentacjaPrzezDzielenieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.opisKształtuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.algorytmŻółwiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -109,7 +111,8 @@
             this.spłaszczanieHistogramuToolStripMenuItem,
             this.operacjaToolStripMenuItem,
             this.lab3ToolStripMenuItem,
-            this.segmeToolStripMenuItem});
+            this.segmeToolStripMenuItem,
+            this.opisKształtuToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(764, 24);
@@ -472,20 +475,16 @@
             // segmentacjaPrzezProgowanieToolStripMenuItem
             // 
             this.segmentacjaPrzezProgowanieToolStripMenuItem.Name = "segmentacjaPrzezProgowanieToolStripMenuItem";
-            this.segmentacjaPrzezProgowanieToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.segmentacjaPrzezProgowanieToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
             this.segmentacjaPrzezProgowanieToolStripMenuItem.Text = "Segmentacja przez progowanie";
             this.segmentacjaPrzezProgowanieToolStripMenuItem.Click += new System.EventHandler(this.segmentacjaPrzezProgowanieToolStripMenuItem_Click);
             // 
             // segmentacjaPrzezRozszerzanieToolStripMenuItem
             // 
             this.segmentacjaPrzezRozszerzanieToolStripMenuItem.Name = "segmentacjaPrzezRozszerzanieToolStripMenuItem";
-            this.segmentacjaPrzezRozszerzanieToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.segmentacjaPrzezRozszerzanieToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
             this.segmentacjaPrzezRozszerzanieToolStripMenuItem.Text = "Segmentacja przez rozszerzanie";
             this.segmentacjaPrzezRozszerzanieToolStripMenuItem.Click += new System.EventHandler(this.segmentacjaPrzezRozszerzanieToolStripMenuItem_Click);
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // histogramówRóżnicPoziomówJasnościToolStripMenuItem
             // 
@@ -493,12 +492,32 @@
             this.histogramówRóżnicPoziomówJasnościToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
             this.histogramówRóżnicPoziomówJasnościToolStripMenuItem.Text = "Histogram różnic poziomów jasności ";
             this.histogramówRóżnicPoziomówJasnościToolStripMenuItem.Click += new System.EventHandler(this.histogramówRóżnicPoziomówJasnościToolStripMenuItem_Click);
+            // 
             // segmentacjaPrzezDzielenieToolStripMenuItem
             // 
             this.segmentacjaPrzezDzielenieToolStripMenuItem.Name = "segmentacjaPrzezDzielenieToolStripMenuItem";
-            this.segmentacjaPrzezDzielenieToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.segmentacjaPrzezDzielenieToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
             this.segmentacjaPrzezDzielenieToolStripMenuItem.Text = "Segmentacja przez dzielenie";
             this.segmentacjaPrzezDzielenieToolStripMenuItem.Click += new System.EventHandler(this.segmentacjaPrzezDzielenieToolStripMenuItem_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // opisKształtuToolStripMenuItem
+            // 
+            this.opisKształtuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.algorytmŻółwiaToolStripMenuItem});
+            this.opisKształtuToolStripMenuItem.Name = "opisKształtuToolStripMenuItem";
+            this.opisKształtuToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
+            this.opisKształtuToolStripMenuItem.Text = "Opis kształtu";
+            // 
+            // algorytmŻółwiaToolStripMenuItem
+            // 
+            this.algorytmŻółwiaToolStripMenuItem.Name = "algorytmŻółwiaToolStripMenuItem";
+            this.algorytmŻółwiaToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.algorytmŻółwiaToolStripMenuItem.Text = "Algorytm żółwia";
+            this.algorytmŻółwiaToolStripMenuItem.Click += new System.EventHandler(this.algorytmŻółwiaToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -576,6 +595,8 @@
         private System.Windows.Forms.ToolStripMenuItem segmentacjaPrzezRozszerzanieToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem histogramówRóżnicPoziomówJasnościToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem segmentacjaPrzezDzielenieToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem opisKształtuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem algorytmŻółwiaToolStripMenuItem;
     }
 }
 
