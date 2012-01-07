@@ -11,9 +11,15 @@ namespace APO.Operacje.Segmentation
     {
         private Bitmap image;
         private int tresholdRange;
+        private bool amplitude;
         public void Convert()
         {
             createRegion(0, 0, image.Width - 1, image.Height - 1);
+        }
+
+        public Split(bool amp)
+        {
+            amplitude = amp;
         }
 
         private void createRegion(int x0, int y0, int x1, int y1)
@@ -67,7 +73,9 @@ namespace APO.Operacje.Segmentation
 
         private double countDeviation(int x0, int y0, int x1, int y1, out int mean)
         {
-            return countDeviationAmplitude(x0, y0, x1, y1, out mean);
+            if(amplitude)
+                return countDeviationAmplitude(x0, y0, x1, y1, out mean);
+
             int width = x1 - x0 + 1;
             int height = y1 - y0 + 1;
             int xMax = x0 + width;

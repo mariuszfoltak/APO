@@ -31,7 +31,7 @@ namespace APO.Operacje.Segmentation
 
         public bool showDialog()
         {
-            myCustomDialog dialog = new myCustomDialog("Progowanie", "Podaj wartość progowania od:", "Podaj wartość progowania do (lub pozostaw to pole puste):");
+            myCustomDialog dialog = new myCustomDialog("Segmentacja przez rozszerzanie", "Podaj wartość punktów startu:", "Podaj przedział segmentacji:");
 
             if (dialog.ShowDialog() == DialogResult.Cancel)
                 return false;

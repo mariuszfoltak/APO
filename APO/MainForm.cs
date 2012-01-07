@@ -426,14 +426,6 @@ namespace APO
                 useFilter(new Operacje.Segmentation.RegionGrowing());
         }
 
-        private void segmentacjaPrzezDzielenieToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
-            if (activeChild != null)
-                useFilter(new Operacje.Segmentation.Split());
-        }
-
         private void algorytmŻółwiaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
@@ -483,6 +475,39 @@ namespace APO
             if (dialog.ShowDialog() == DialogResult.Cancel)
                 return;
             activeChild.wododzial(Convert.ToInt32(dialog.value), Convert.ToInt32(dialog.value2));
+        }
+
+        private void odchylenieStandardoweToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
+            if (activeChild != null)
+                useFilter(new Operacje.Segmentation.Split(false));
+        }
+
+        private void amplitudaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
+            if (activeChild != null)
+                useFilter(new Operacje.Segmentation.Split(true));
+        }
+
+        private void segmentacjaPrzezDzielenieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void odcToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
+            if (activeChild != null)
+                useFilter(new Operacje.Segmentation.Split(false));
+        }
+
+        private void amplitudaToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            PictureForm activeChild = (PictureForm)this.ActiveMdiChild;
+            if (activeChild != null)
+                useFilter(new Operacje.Segmentation.Split(true));
         }
     }
 }
